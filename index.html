@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catch — buy real food, watch a pantry grow</title>
+<meta name="description" content="An iOS app in open beta. Buy real food and it stocks a pantry. The shelf fades if you stop. No coins, no streaks, no notifications.">
+<meta property="og:title" content="Catch — buy real food, watch a pantry grow">
+<meta property="og:description" content="iOS beta. Scan a barcode or photograph your whole list. What's genuinely good goes on a shelf — and the shelf fades if you stop.">
+<meta property="og:image" content="img/cover.png">
+<meta name="theme-color" content="#F5EAD8">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Palette and type from Alberto's "Organic" design system on Claude Design, with one
+   deliberate departure: the primary action stays the app's own coral (#F5615C) rather than
+   Organic's terracotta, so the button on the page is the button in the app. */
+:root{
+  --cream:#F5EAD8; --paper:#EBDDC5; --shelf:#C67139; --shelf-dark:#8E4E26;
+  --coral:#F5615C; --coral-deep:#C93F3A; --ink:#201E1D; --ink-soft:#6A5F52;
+  --leaf:#7A8A5E; --sun:#E0A340;
+  --r:16px; --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:Figtree,ui-sans-serif,system-ui,sans-serif; font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+/* Paper grain — a flat cream reads like a default; this reads like a page. */
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{position:relative; z-index:1; max-width:var(--maxw); margin:0 auto; padding:0 22px}
+h1,h2,h3,.display{
+  font-family:Caprasimo,Georgia,serif; font-weight:400; line-height:1.06;
+  letter-spacing:-.005em; margin:0;
+}
+
+/* ── header ─────────────────────────────────────────────── */
+header{padding:26px 0 8px}
+.bar{display:flex; align-items:center; justify-content:space-between; gap:16px}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
+.brand img{width:42px; height:42px; border-radius:12px; box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.brand span{font-family:Caprasimo,serif; font-size:27px; letter-spacing:-.01em}
+.langs{display:flex; gap:4px; background:var(--paper); padding:4px; border-radius:999px; border:2px solid rgba(107,74,50,.14)}
+.langs button{
+  font:inherit; font-weight:700; font-size:14px; border:0; cursor:pointer; color:var(--ink-soft);
+  background:transparent; padding:6px 14px; border-radius:999px; transition:.18s;
+}
+.langs button[aria-pressed="true"]{background:var(--coral); color:#fff; box-shadow:0 2px 0 var(--coral-deep)}
+
+/* ── hero ───────────────────────────────────────────────── */
+.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center; padding:44px 0 20px}
+.tag{
+  display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:13px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--coral-deep); background:rgba(245,97,92,.12);
+  border:2px solid rgba(245,97,92,.28); padding:6px 14px; border-radius:999px; margin-bottom:20px;
+}
+.tag i{width:8px; height:8px; border-radius:50%; background:var(--coral); animation:blip 2s ease-in-out infinite}
+@keyframes blip{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-size:clamp(38px,6vw,62px)}
+.hero h1 em{font-style:normal; color:var(--coral); position:relative; white-space:nowrap}
+.hero h1 em::after{
+  content:""; position:absolute; left:0; right:0; bottom:.06em; height:.14em; border-radius:99px;
+  background:var(--sun); opacity:.5; z-index:-1;
+}
+.lede{font-size:19px; color:var(--ink-soft); margin:20px 0 28px; max-width:46ch}
+.cta{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+.btn{
+  display:inline-flex; align-items:center; gap:10px; font-weight:800; font-size:17px; text-decoration:none;
+  padding:15px 26px; border-radius:var(--r); border:0; cursor:pointer; font-family:inherit; transition:.16s;
+}
+.btn-main{background:var(--coral); color:#fff; box-shadow:0 4px 0 var(--coral-deep)}
+.btn-main:hover{transform:translateY(-2px); box-shadow:0 6px 0 var(--coral-deep)}
+.btn-main:active{transform:translateY(2px); box-shadow:0 2px 0 var(--coral-deep)}
+.btn-ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 2px rgba(107,74,50,.25)}
+.btn-ghost:hover{background:var(--paper)}
+.note{font-size:14px; color:var(--ink-soft); margin-top:14px}
+.shots{position:relative; display:flex; justify-content:center; align-items:flex-end; min-height:420px}
+.shots img{
+  width:212px; border-radius:26px; border:6px solid #fff; background:#fff;
+  box-shadow:0 18px 40px rgba(107,74,50,.22);
+}
+.shots img:first-child{transform:rotate(-6deg) translateX(26px); z-index:1}
+.shots img:last-child{transform:rotate(5deg) translateX(-26px); position:relative; z-index:2}
+
+/* ── the shelf demo — the point of the page ─────────────── */
+.demo{margin:64px 0 0; background:var(--paper); border-radius:34px; padding:34px 30px 30px; border:3px solid rgba(107,74,50,.13)}
+.demo h2{font-size:clamp(26px,3.6vw,36px)}
+.demo p.sub{color:var(--ink-soft); margin:12px 0 26px; max-width:56ch}
+.shelf{position:relative; padding:14px 0 0}
+.row{display:flex; justify-content:space-around; align-items:flex-end; gap:8px; padding:0 6px 10px}
+.item{text-align:center; width:19%; transition:opacity .5s ease, filter .5s ease}
+.item svg{width:100%; max-width:92px; height:auto; filter:drop-shadow(0 5px 6px rgba(107,74,50,.22))}
+.item b{display:block; font-size:12.5px; font-weight:700; margin-top:6px; color:var(--ink-soft)}
+.plank{
+  height:20px; border-radius:8px; background:linear-gradient(180deg,var(--shelf) 0%,var(--shelf) 55%,var(--shelf-dark) 100%);
+  box-shadow:0 5px 10px rgba(107,74,50,.24), inset 0 2px 0 rgba(255,255,255,.28);
+}
+.slider-wrap{margin-top:26px}
+.slider-top{display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:8px}
+.slider-top label{font-weight:700; font-size:15px}
+.weeks{font-family:Caprasimo,serif; font-size:22px; color:var(--shelf)}
+input[type=range]{
+  -webkit-appearance:none; appearance:none; width:100%; height:12px; border-radius:99px; outline:none;
+  background:linear-gradient(90deg,var(--leaf),var(--sun),var(--coral)); cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:30px; height:30px; border-radius:50%; background:#fff; cursor:grab;
+  border:4px solid var(--coral); box-shadow:0 3px 8px rgba(107,74,50,.3);
+}
+input[type=range]::-moz-range-thumb{
+  width:26px; height:26px; border-radius:50%; background:#fff; cursor:grab;
+  border:4px solid var(--coral); box-shadow:0 3px 8px rgba(107,74,50,.3);
+}
+.verdict{margin-top:18px; font-weight:700; font-size:16px; min-height:1.6em; color:var(--ink)}
+
+/* ── how / beta / contact ──────────────────────────────── */
+section{padding:58px 0}
+h2.head{font-size:clamp(28px,4vw,40px); margin-bottom:10px}
+.sub{color:var(--ink-soft)}
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:32px}
+.step{background:#fff; border-radius:26px; padding:26px 22px; border:3px solid rgba(107,74,50,.11); box-shadow:0 6px 0 rgba(107,74,50,.06)}
+.step .n{
+  font-family:Caprasimo,serif; font-size:36px; color:var(--shelf);
+  line-height:1; display:block; margin-bottom:10px;
+}
+.step h3{font-size:20px; margin-bottom:8px}
+.step p{margin:0; color:var(--ink-soft); font-size:15.5px}
+
+.beta{background:var(--ink); color:#F6EADF; border-radius:34px; padding:44px 34px}
+.beta h2{color:#fff}
+.beta .sub{color:rgba(246,234,223,.72)}
+.asks{list-style:none; padding:0; margin:26px 0 0; display:grid; gap:12px}
+.asks li{display:flex; gap:12px; align-items:flex-start; font-size:16px}
+.asks li::before{content:"→"; color:var(--sun); font-weight:800; flex:none}
+
+.contact-card{background:#fff; border-radius:30px; padding:34px 28px; border:3px solid rgba(107,74,50,.11); box-shadow:0 8px 0 rgba(107,74,50,.06)}
+.field{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px}
+.field input{
+  flex:1 1 240px; font:inherit; padding:14px 18px; border-radius:var(--r); border:2px solid rgba(107,74,50,.2);
+  background:var(--cream); color:var(--ink);
+}
+.field input:focus{outline:none; border-color:var(--coral)}
+.tiny{font-size:13.5px; color:var(--ink-soft); margin-top:14px}
+.tiny a{color:var(--coral-deep)}
+footer{padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:14px}
+footer a{color:var(--coral-deep)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr; gap:26px; padding-top:28px}
+  .shots{min-height:340px}
+  .shots img{width:172px}
+  .steps{grid-template-columns:1fr}
+  .item svg{max-width:64px}
+  .item b{font-size:11px}
+}
+[data-t]{display:none}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="bar">
+      <a class="brand" href="#top"><img src="img/icon.png" alt=""><span>Catch</span></a>
+      <div class="langs" role="group" aria-label="Language">
+        <button data-lang="en" aria-pressed="true">EN</button>
+        <button data-lang="it" aria-pressed="false">IT</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="top" style="padding-top:34px">
+    <div>
+      <div class="tag"><i></i><span data-t data-en="Open beta · TestFlight" data-it="Beta aperta · TestFlight"></span></div>
+      <h1>
+        <span data-t data-en="Buy real food." data-it="Compra cibo vero."></span><br>
+        <em data-t data-en="Watch a pantry grow." data-it="Guarda crescere la dispensa."></em>
+      </h1>
+      <p class="lede" data-t
+         data-en="Scan a barcode, or photograph your whole shopping list. What's genuinely good goes on a shelf — and the shelf fades if you stop. No coins, no streaks, no notifications, nothing turns red."
+         data-it="Scansiona un codice a barre, o fotografa tutta la lista della spesa. Quello che è davvero sano finisce sullo scaffale — e lo scaffale sbiadisce se smetti. Niente monete, niente streak, niente notifiche, niente diventa rosso."></p>
+      <div class="cta">
+        <a class="btn btn-main" href="https://testflight.apple.com/join/aJTSf47G">
+          <svg width="19" height="22" viewBox="0 0 17 20" fill="currentColor" aria-hidden="true"><path d="M14.1 10.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.3-.9-2.3-3.6zM11.9 3.5c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.7-1.3z"/></svg>
+          <span data-t data-en="Install the beta" data-it="Installa la beta"></span>
+        </a>
+        <a class="btn btn-ghost" href="#how"><span data-t data-en="How it works" data-it="Come funziona"></span></a>
+      </div>
+      <p class="note" data-t
+         data-en="iPhone only, one tap, no signup and no account. Free, and it stays free."
+         data-it="Solo iPhone, un tap, senza registrazione e senza account. Gratis, e resta gratis."></p>
+    </div>
+    <div class="shots">
+      <img src="img/pantry.png" alt="The pantry shelf in Catch, showing graded foods" loading="lazy">
+      <img src="img/scan.png" alt="The scan screen in Catch" loading="lazy">
+    </div>
+  </section>
+
+  <!-- The mechanic, demonstrated. It takes weeks in the app; here it takes a drag. -->
+  <section class="demo" id="how" style="padding-top:34px">
+    <h2 data-t data-en="The shelf remembers. Then it forgets."
+        data-it="Lo scaffale ricorda. Poi dimentica."></h2>
+    <p class="sub" data-t
+       data-en="Every food fades at its own pace — greens go first, oil lasts for months. Drag to skip ahead. In the app this happens over real weeks, which is the whole point: it's a mirror of how you've been eating, not a score out of ten."
+       data-it="Ogni alimento sbiadisce al suo ritmo — la verdura per prima, l'olio dura mesi. Trascina per andare avanti nel tempo. Nell'app succede nell'arco di settimane vere, ed è tutto il senso: è uno specchio di come hai mangiato, non un voto da uno a dieci."></p>
+
+    <div class="shelf">
+      <div class="row" id="row"></div>
+      <div class="plank"></div>
+    </div>
+
+    <div class="slider-wrap">
+      <div class="slider-top">
+        <label for="wk" data-t data-en="Weeks since you last shopped well" data-it="Settimane da quando hai fatto una spesa sana"></label>
+        <span class="weeks" id="wkOut">0</span>
+      </div>
+      <input type="range" id="wk" min="0" max="6" step="1" value="0" aria-describedby="verdict">
+      <p class="verdict" id="verdict"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="head" data-t data-en="Three things, that's all it is" data-it="Tre cose, tutto qui"></h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3 data-t data-en="Scan, or snap the list" data-it="Scansiona, o fotografa la lista"></h3>
+        <p data-t data-en="A barcode gets a real grade. A photo of your handwritten list becomes a checklist."
+                  data-it="Un codice a barre riceve un voto vero. Una foto della lista scritta a mano diventa una checklist."></p>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3 data-t data-en="Good food stocks the shelf" data-it="Il cibo buono riempie lo scaffale"></h3>
+        <p data-t data-en="Only what's genuinely good gets in. Everything else goes quietly in a drawer — no scolding."
+                  data-it="Entra solo quello che è davvero sano. Il resto finisce in un cassetto, senza rimproveri."></p>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3 data-t data-en="The shelf fades" data-it="Lo scaffale sbiadisce"></h3>
+        <p data-t data-en="Stop buying vegetables and that shelf goes quiet. Buy them again and it fills back up."
+                  data-it="Smetti di comprare verdura e quello scaffale si spegne. Ricomincia e si riempie di nuovo."></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="beta">
+      <h2 data-t data-en="It's a beta, and I need the bad news"
+                 data-it="È una beta, e mi serve sapere cosa non va"></h2>
+      <p class="sub" data-t
+         data-en="I'm one person in Italy building this. It works on my shopping; I have no idea whether it works on yours. Most useful things you could tell me:"
+         data-it="Sono una persona sola, in Italia. Funziona sulla mia spesa; non ho idea se funzioni sulla tua. Le cose più utili che puoi dirmi:"></p>
+      <ul class="asks">
+        <li data-t data-en="A product you scanned that came back with nothing. Send me the barcode."
+                   data-it="Un prodotto che hai scansionato e non è stato riconosciuto. Mandami il codice a barre."></li>
+        <li data-t data-en="A food you typed that the app graded wrongly — in any of its five languages."
+                   data-it="Un alimento che hai scritto e che l'app ha valutato male — in una qualsiasi delle sue cinque lingue."></li>
+        <li data-t data-en="Any sentence that reads badly. The Japanese, Chinese and Arabic are machine-translated and no native speaker has checked them."
+                   data-it="Qualsiasi frase scritta male. Giapponese, cinese e arabo sono tradotti a macchina e nessun madrelingua li ha controllati."></li>
+        <li data-t data-en="The moment you got bored and closed it. That one matters most."
+                   data-it="Il momento in cui ti sei annoiato e l'hai chiusa. Quello conta più di tutto."></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-card">
+      <h2 class="head" data-t data-en="Tell me what broke" data-it="Dimmi cosa si è rotto"></h2>
+      <p class="sub" data-t
+         data-en="The app collects no email and sends no notifications, which means I have no way to reach you unless you write to me. Leave an address and I'll tell you when the thing you reported is fixed — nothing else, ever."
+         data-it="L'app non raccoglie email e non manda notifiche, quindi non ho modo di contattarti se non mi scrivi tu. Lascia un indirizzo e ti dirò quando quello che hai segnalato è sistemato — nient'altro, mai."></p>
+      <form class="field" id="mailForm">
+        <input type="email" id="email" required placeholder="you@example.com"
+               aria-label="Your email" autocomplete="email">
+        <button class="btn btn-main" type="submit"><span data-t data-en="Write to me" data-it="Scrivimi"></span></button>
+      </form>
+      <p class="tiny" data-t
+         data-en='This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.'
+         data-it='Si apre la tua app di posta con un messaggio già pronto — questa pagina non salva nulla. Oppure scrivi direttamente a <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.'></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <span data-t data-en="Catch — made by Alberto Clemente in Italy." data-it="Catch — fatto da Alberto Clemente, in Italia."></span>
+      <a href="https://testflight.apple.com/join/aJTSf47G" data-t data-en="Install the beta" data-it="Installa la beta"></a>
+    </p>
+    <p class="tiny" data-t
+       data-en="Grades come from Open Food Facts, plus a hand-checked table of about 110 staples."
+       data-it="I voti vengono da Open Food Facts, più una tabella di circa 110 alimenti base controllata a mano."></p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ── language ─────────────────────────────────────────── */
+  var STR = {};
+  function apply(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-t]").forEach(function(el){
+      var v = el.getAttribute("data-" + lang);
+      if (v != null) { el.innerHTML = v; el.style.display = "inline"; }
+    });
+    document.querySelectorAll(".langs button").forEach(function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+    try { localStorage.setItem("catch-lang", lang); } catch(e){}
+    STR.lang = lang;
+    draw();
+  }
+  document.querySelectorAll(".langs button").forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.dataset.lang); });
+  });
+
+  /* ── the shelf ────────────────────────────────────────────
+     Fade rates are the app's own idea: each food group keeps for a
+     different length of time, so the shelf tells you WHAT you stopped
+     buying, not just that you stopped. weeks = how long it stays full. */
+  var FOODS = [
+    { keeps:1.2, en:"Greens",  it:"Verdura",  svg:'<svg viewBox="0 0 100 100"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#7A8A5E" d="M50 14c14 0 26 12 26 27S64 84 50 84 24 56 24 41 36 14 50 14z"/></g><path d="M50 26v50M50 40l-13-9M50 54l13-9M50 66l-13-9" stroke="#5C6A44" stroke-width="4" stroke-linecap="round" fill="none"/></svg>' },
+    { keeps:2.0, en:"Fish",    it:"Pesce",    svg:'<svg viewBox="0 0 100 100"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#7FB2D9" d="M18 52c12-16 30-22 44-22s24 8 24 8-8 22-26 30S24 76 18 66c-2-4-2-10 0-14z"/><path fill="#7FB2D9" d="M86 38l12-10v44L86 60z"/></g><circle cx="70" cy="46" r="4.5" fill="#25476B"/></svg>' },
+    { keeps:3.0, en:"Fruit",   it:"Frutta",   svg:'<svg viewBox="0 0 100 100"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#EE6C5B" d="M50 26c16 0 28 13 28 30S66 88 50 88 22 73 22 56s12-30 28-30z"/></g><path d="M50 26c0-8 4-14 12-16" stroke="#7A4A2B" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M50 22c8-6 18-4 20 2-6 5-15 4-20-2z" fill="#4E9E5F" stroke="#fff" stroke-width="4"/></svg>' },
+    { keeps:4.5, en:"Grains",  it:"Cereali",  svg:'<svg viewBox="0 0 100 100"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#E9A94B" d="M28 34h44l6 52H22z"/><path fill="#F3C878" d="M28 34l-4-14h52l-4 14z"/></g><path d="M42 52c4 6 4 12 0 18M58 52c4 6 4 12 0 18" stroke="#A96A20" stroke-width="5" stroke-linecap="round" fill="none"/></svg>' },
+    { keeps:8.0, en:"Oil",     it:"Olio",     svg:'<svg viewBox="0 0 100 100"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#A8B87E" d="M36 40h28c4 12 8 18 8 30 0 10-8 16-22 16s-22-6-22-16c0-12 4-18 8-30z"/><rect x="42" y="14" width="16" height="26" rx="5" fill="#7A8A5E"/></g><circle cx="50" cy="72" r="9" fill="#5C6A44" stroke="#fff" stroke-width="4"/></svg>' }
+  ];
+
+  var row = document.getElementById("row");
+  var wk  = document.getElementById("wk");
+  var out = document.getElementById("wkOut");
+  var ver = document.getElementById("verdict");
+
+  FOODS.forEach(function(f, i){
+    var d = document.createElement("div");
+    d.className = "item";
+    d.id = "food" + i;
+    d.innerHTML = f.svg + "<b></b>";
+    row.appendChild(d);
+  });
+
+  function draw(){
+    var w = Number(wk.value);
+    var lang = STR.lang || "en";
+    out.textContent = w;
+    var goneCount = 0, firstGone = null;
+
+    FOODS.forEach(function(f, i){
+      var el = document.getElementById("food" + i);
+      // Linear fade to a floor of .12 — never fully gone, exactly like the app's shelf.
+      var life = Math.max(0, 1 - (w / f.keeps));
+      var op = 0.12 + 0.88 * life;
+      el.style.opacity = op.toFixed(3);
+      el.style.filter = "saturate(" + (25 + 75 * life).toFixed(0) + "%)";
+      el.querySelector("b").textContent = f[lang] || f.en;
+      if (life <= 0.05) { goneCount++; if (firstGone === null) firstGone = f[lang] || f.en; }
+    });
+
+    var msg;
+    if (lang === "it") {
+      msg = w === 0 ? "Dispensa piena. È l'aspetto di una settimana in cui hai fatto la spesa bene."
+          : goneCount === 0 ? "Comincia a sbiadire. Ancora niente di grave."
+          : goneCount >= FOODS.length - 1 ? "Praticamente vuota. L'app non te lo dice: te lo fa vedere."
+          : "«" + firstGone + "» è sparita per prima — è così che capisci cosa hai smesso di comprare.";
+    } else {
+      msg = w === 0 ? "A full pantry. This is what a week of shopping well looks like."
+          : goneCount === 0 ? "Starting to fade. Nothing serious yet."
+          : goneCount >= FOODS.length - 1 ? "Nearly empty. The app doesn't tell you that — it shows you."
+          : "“" + firstGone + "” went first — that's how you notice what you stopped buying.";
+    }
+    ver.textContent = msg;
+  }
+  wk.addEventListener("input", draw);
+
+  /* ── contact ──────────────────────────────────────────── */
+  document.getElementById("mailForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var addr = document.getElementById("email").value.trim();
+    var it = (STR.lang === "it");
+    var subject = it ? "Catch — feedback dalla beta" : "Catch — beta feedback";
+    var body = (it
+      ? "Ciao Alberto,\n\nHo provato Catch e ho notato questo:\n\n\n\n(Il mio indirizzo: " + addr + ")"
+      : "Hi Alberto,\n\nI tried Catch and noticed this:\n\n\n\n(My address: " + addr + ")");
+    window.location.href = "mailto:clemalb@gmail.com?subject=" + encodeURIComponent(subject) +
+                           "&body=" + encodeURIComponent(body);
+  });
+
+  /* ── boot ─────────────────────────────────────────────── */
+  var saved = null;
+  try { saved = localStorage.getItem("catch-lang"); } catch(e){}
+  apply(saved || ((navigator.language || "en").toLowerCase().indexOf("it") === 0 ? "it" : "en"));
+})();
+</script>
+</body>
+</html>
