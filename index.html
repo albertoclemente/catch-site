@@ -49,10 +49,13 @@ header{padding:26px 0 8px}
 .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
 .brand img{width:42px; height:42px; border-radius:12px; box-shadow:0 3px 0 rgba(0,0,0,.12)}
 .brand span{font-family:Caprasimo,serif; font-size:27px; letter-spacing:-.01em}
-.langs{display:flex; gap:4px; background:var(--paper); padding:4px; border-radius:999px; border:2px solid rgba(107,74,50,.14)}
+.langs{display:flex; flex-wrap:wrap; gap:3px; background:var(--paper); padding:4px; border-radius:999px; border:2px solid rgba(107,74,50,.14)}
+[dir="rtl"] .asks li::before{content:"\2190"}
+[dir="rtl"] .step .n{direction:ltr}
+[dir="rtl"] .shotstrip figcaption,[dir="rtl"] .lede,[dir="rtl"] .note,[dir="rtl"] .tiny,[dir="rtl"] .sub{text-align:right}
 .langs button{
-  font:inherit; font-weight:700; font-size:14px; border:0; cursor:pointer; color:var(--ink-soft);
-  background:transparent; padding:6px 14px; border-radius:999px; transition:.18s;
+  font:inherit; font-weight:700; font-size:13px; border:0; cursor:pointer; color:var(--ink-soft);
+  background:transparent; padding:5px 10px; border-radius:999px; transition:.18s;
 }
 .langs button[aria-pressed="true"]{background:var(--coral); color:#fff; box-shadow:0 2px 0 var(--coral-deep)}
 
@@ -189,6 +192,10 @@ footer a{color:var(--coral-deep)}
       <div class="langs" role="group" aria-label="Language">
         <button data-lang="en" aria-pressed="true">EN</button>
         <button data-lang="it" aria-pressed="false">IT</button>
+        <button data-lang="ja" aria-pressed="false">JA</button>
+        <button data-lang="zh" aria-pressed="false">ZH</button>
+        <button data-lang="ko" aria-pressed="false">KO</button>
+        <button data-lang="ar" aria-pressed="false">AR</button>
       </div>
     </div>
   </header>
@@ -196,26 +203,26 @@ footer a{color:var(--coral-deep)}
   <section class="hero" id="top" style="padding-top:34px">
     <div>
       <div class="tag-row">
-        <div class="tag"><i></i><span data-t data-en="Open beta · TestFlight" data-it="Beta aperta · TestFlight"></span></div>
+        <div class="tag"><i></i><span data-t data-en="Open beta · TestFlight" data-ja='オープンベータ · TestFlight' data-zh='公开测试 · TestFlight' data-ko='오픈 베타 · TestFlight' data-ar='نسخة تجريبية مفتوحة · TestFlight' data-it="Beta aperta · TestFlight"></span></div>
         <a class="badge" href="https://tsukutta.app/apps/dc1dcd00-2f09-4c29-bbbf-43fd01db44c8"><img src="https://tsukutta.app/api/badge/dc1dcd00-2f09-4c29-bbbf-43fd01db44c8?lang=en" alt="Featured on Tsukutta" width="210" height="40"></a>
         <a class="badge" href="https://betabound.com/"><img src="https://betabound.com/wp-content/uploads/2024/07/Betabound-Badge-3.png" alt="Listed on Betabound" width="246" height="66" decoding="async"></a>
       </div>
       <h1>
-        <span data-t data-en="Buy real food." data-it="Compra cibo vero."></span><br>
-        <em data-t data-en="Watch a pantry grow." data-it="Guarda crescere la dispensa."></em>
+        <span data-t data-en="Buy real food." data-ja='本物の食べ物を買おう。' data-zh='买真正的食物。' data-ko='진짜 음식을 사세요.' data-ar='اشترِ طعامًا حقيقيًا.' data-it="Compra cibo vero."></span><br>
+        <em data-t data-en="Watch a pantry grow." data-ja='食料棚が育つのを見よう。' data-zh='看着食物柜长起来。' data-ko='팬트리가 자라는 걸 보세요.' data-ar='وشاهد مخزنك ينمو.' data-it="Guarda crescere la dispensa."></em>
       </h1>
       <p class="lede" data-t
-         data-en="Other grocery apps hand you points. Catch hands you a mirror. Photograph any shopping list and it lands sorted by aisle, so you walk the shop once — and what you actually buy stocks a pantry shelf that fades if you stop."
+         data-en="Other grocery apps hand you points. Catch hands you a mirror. Photograph any shopping list and it lands sorted by aisle, so you walk the shop once — and what you actually buy stocks a pantry shelf that fades if you stop." data-ja='ほかの買い物アプリはポイントをくれる。Catch が返すのは鏡です。買い物リストを撮れば売り場順に並ぶので、店内を一周するだけで済む。そして実際に買ったものが棚に並び、買わなくなれば薄れていきます。' data-zh='别的购物应用给你积分，Catch 给你一面镜子。拍下任意购物清单，它会按货架分类，让你只走一圈；而你真正买下的东西会摆上食物柜，一旦不再买，它就慢慢褪去。' data-ko='다른 장보기 앱은 포인트를 줍니다. Catch는 거울을 건넵니다. 어떤 장보기 목록이든 찍으면 매대 순서로 정리되어 매장을 한 바퀴만 돌면 되고, 실제로 산 것이 팬트리 선반을 채웠다가 사지 않으면 서서히 흐려집니다.' data-ar='تطبيقات التسوّق الأخرى تمنحك نقاطًا. أمّا Catch فيمنحك مرآة. صوّر أي قائمة تسوّق فتصل مرتّبة حسب الممرات، فتدور في المتجر مرّة واحدة — وما تشتريه فعلًا يملأ رفّ مخزنك، ويبهت إن توقّفت.'
          data-it="Le altre app della spesa ti danno punti. Catch ti dà uno specchio. Fotografi una lista qualsiasi e arriva ordinata per corsia, così giri il negozio una volta sola — e quello che compri davvero riempie uno scaffale che sbiadisce se smetti."></p>
       <div class="cta">
         <a class="btn btn-main" href="https://testflight.apple.com/join/aJTSf47G">
           <svg width="19" height="22" viewBox="0 0 17 20" fill="currentColor" aria-hidden="true"><path d="M14.1 10.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.3-.9-2.3-3.6zM11.9 3.5c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.7-1.3z"/></svg>
-          <span data-t data-en="Install the beta" data-it="Installa la beta"></span>
+          <span data-t data-en="Install the beta" data-ja='ベータ版をインストール' data-zh='安装测试版' data-ko='베타 설치하기' data-ar='ثبّت النسخة التجريبية' data-it="Installa la beta"></span>
         </a>
-        <a class="btn btn-ghost" href="#how"><span data-t data-en="How it works" data-it="Come funziona"></span></a>
+        <a class="btn btn-ghost" href="#how"><span data-t data-en="How it works" data-ja='仕組み' data-zh='如何运作' data-ko='작동 방식' data-ar='كيف يعمل' data-it="Come funziona"></span></a>
       </div>
       <p class="note" data-t
-         data-en='iPhone: one tap, no signup and no account. The beta costs nothing. On Android? <a href="#android">Apply to the closed test</a>.'
+         data-en='iPhone: one tap, no signup and no account. The beta costs nothing. On Android? <a href="#android">Apply to the closed test</a>.' data-ja='iPhone なら一度のタップで、登録もアカウントも不要。ベータは無料です。Android の方は <a href="#android">クローズドテストに応募</a>してください。' data-zh='iPhone 上一键即可，无需注册、无需账号。测试版不收费。用 Android？<a href="#android">申请参加封闭测试</a>。' data-ko='iPhone은 한 번의 탭이면 되고, 가입도 계정도 필요 없습니다. 베타는 무료입니다. Android라면 <a href="#android">비공개 테스트에 신청</a>하세요.' data-ar='على iPhone: نقرة واحدة، بلا تسجيل وبلا حساب. النسخة التجريبية مجانية. تستخدم Android؟ <a href="#android">تقدّم للاختبار المغلق</a>.'
          data-it='iPhone: un tap, senza registrazione e senza account. La beta non costa nulla. Su Android? <a href="#android">Candidati al test chiuso</a>.'></p>
     </div>
     <div class="shots">
@@ -226,10 +233,10 @@ footer a{color:var(--coral-deep)}
 
   <!-- The mechanic, demonstrated. It takes weeks in the app; here it takes a drag. -->
   <section class="demo" id="how" style="padding-top:34px">
-    <h2 data-t data-en="The shelf remembers. Then it forgets."
+    <h2 data-t data-en="The shelf remembers. Then it forgets." data-ja='棚は覚えている。そして忘れていく。' data-zh='食物柜会记得，然后慢慢忘记。' data-ko='선반은 기억합니다. 그리고 잊습니다.' data-ar='الرفّ يتذكّر. ثمّ ينسى.'
         data-it="Lo scaffale ricorda. Poi dimentica."></h2>
     <p class="sub" data-t
-       data-en="Every food fades at its own pace — greens go first, oil lasts for months. Drag to skip ahead. In the app this happens over real weeks, which is the whole point: the shelf is a mirror of the last few weeks, not a verdict on today."
+       data-en="Every food fades at its own pace — greens go first, oil lasts for months. Drag to skip ahead. In the app this happens over real weeks, which is the whole point: the shelf is a mirror of the last few weeks, not a verdict on today." data-ja='食べ物ごとに薄れる速さは違います。青菜が先に、油は数か月もつ。ドラッグして先へ進めてみてください。アプリでは本物の週をかけて起こります。そこが肝心で、棚は今日の判定ではなく、ここ数週間を映す鏡なのです。' data-zh='每种食物褪色的快慢不同：绿叶菜最先，油能撑上几个月。拖动可以快进。在应用里，这会真实地经过几个星期——这正是重点：食物柜映照的是最近几周，而不是对今天的评判。' data-ko='음식마다 흐려지는 속도가 다릅니다. 채소가 먼저, 기름은 몇 달을 갑니다. 드래그해 앞으로 넘겨 보세요. 앱에서는 실제 몇 주에 걸쳐 일어나며, 바로 그 점이 핵심입니다. 선반은 오늘에 대한 판정이 아니라 지난 몇 주를 비추는 거울입니다.' data-ar='كل صنف يبهت بوتيرته: الخضار أولًا، والزيت يدوم شهورًا. اسحب لتتقدّم في الزمن. داخل التطبيق يحدث هذا عبر أسابيع حقيقية، وهذا هو بيت القصيد: الرفّ مرآة للأسابيع الأخيرة، لا حكمٌ على يومك.'
        data-it="Ogni alimento sbiadisce al suo ritmo — la verdura per prima, l'olio dura mesi. Trascina per andare avanti nel tempo. Nell'app succede nell'arco di settimane vere, ed è tutto il senso: lo scaffale è uno specchio delle ultime settimane, non un giudizio sulla giornata."></p>
 
     <div class="shelf">
@@ -239,7 +246,7 @@ footer a{color:var(--coral-deep)}
 
     <div class="slider-wrap">
       <div class="slider-top">
-        <label for="wk" data-t data-en="Weeks since you last shopped well" data-it="Settimane da quando hai fatto una spesa sana"></label>
+        <label for="wk" data-t data-en="Weeks since you last shopped well" data-ja='最後にいい買い物をしてからの週数' data-zh='距离上次好好采购已过去的周数' data-ko='마지막으로 잘 장 본 뒤 지난 주 수' data-ar='الأسابيع منذ آخر تسوّق جيّد' data-it="Settimane da quando hai fatto una spesa sana"></label>
         <span class="weeks" id="wkOut">0</span>
       </div>
       <input type="range" id="wk" min="0" max="6" step="1" value="0" aria-describedby="verdict">
@@ -248,89 +255,89 @@ footer a{color:var(--coral-deep)}
   </section>
 
   <section>
-    <h2 class="head" data-t data-en="Four things, that's all it is" data-it="Quattro cose, tutto qui"></h2>
+    <h2 class="head" data-t data-en="Four things, that's all it is" data-ja='たった四つのこと' data-zh='就这四件事' data-ko='네 가지, 그게 전부입니다' data-ar='أربعة أشياء، لا أكثر' data-it="Quattro cose, tutto qui"></h2>
     <div class="steps four">
       <div class="step">
         <img class="pip" src="img/pip-slide-snap.png" alt="" width="336" height="289" loading="lazy" decoding="async">
-        <h3 data-t data-en="Snap your list" data-it="Fotografa la lista"></h3>
-        <p data-t data-en="Point the camera at any list — handwritten, printed, a sticky note. It lands sorted by aisle, so you walk the shop once."
+        <h3 data-t data-en="Snap your list" data-ja='リストを撮る' data-zh='拍下清单' data-ko='목록을 찍으세요' data-ar='صوّر قائمتك' data-it="Fotografa la lista"></h3>
+        <p data-t data-en="Point the camera at any list — handwritten, printed, a sticky note. It lands sorted by aisle, so you walk the shop once." data-ja='手書きでも印刷でも付箋でも、どんなリストにもカメラを向けるだけ。売り場順に並んで届くので、店内を一周するだけで済みます。' data-zh='把镜头对准任意清单——手写的、打印的、一张便利贴都行。它会按货架分好类，让你只走一圈。' data-ko='손글씨든 인쇄물이든 포스트잇이든, 어떤 목록에나 카메라를 대세요. 매대 순서로 정리되어 도착하니 매장을 한 바퀴만 돌면 됩니다.' data-ar='وجّه الكاميرا إلى أي قائمة — مكتوبة بخط اليد أو مطبوعة أو ورقة لاصقة. تصل مرتّبة حسب الممرات، فتدور في المتجر مرّة واحدة.'
                   data-it="Punta la fotocamera su una lista qualsiasi — scritta a mano, stampata, un post-it. Arriva ordinata per corsia, così giri il negozio una volta sola."></p>
       </div>
       <div class="step">
         <img class="pip" src="img/pip-slide-catch.png" alt="" width="336" height="289" loading="lazy" decoding="async">
-        <h3 data-t data-en="Catch it in the aisle" data-it="Prendilo nella corsia"></h3>
-        <p data-t data-en="In the shop, tap an item and Pip catches it in his basket. Keep the chain going and the run gets loud."
+        <h3 data-t data-en="Catch it in the aisle" data-ja='売り場でキャッチ' data-zh='在货架前接住它' data-ko='매대에서 잡으세요' data-ar='التقطها في الممر' data-it="Prendilo nella corsia"></h3>
+        <p data-t data-en="In the shop, tap an item and Pip catches it in his basket. Keep the chain going and the run gets loud." data-ja='店内で品物をタップすると、ピップがかごで受け止めます。連鎖を続ければ、買い物はどんどん盛り上がります。' data-zh='在店里点一下商品，皮普就会把它接进篮子。让连击继续，这趟采购会越来越热闹。' data-ko='매장에서 품목을 탭하면 핍이 바구니로 받아냅니다. 연속을 이어가면 장보기가 점점 신나집니다.' data-ar='في المتجر، انقر على صنف فيلتقطه بيب في سلّته. تابع السلسلة وسترتفع حماوة الجولة.'
                   data-it="Nel negozio, tocca un articolo e Pip lo prende al volo nel cesto. Tieni la catena e la spesa si accende."></p>
       </div>
       <div class="step">
         <img class="pip" src="img/pip-slide-think.png" alt="" width="336" height="289" loading="lazy" decoding="async">
-        <h3 data-t data-en="Ask before you buy" data-it="Chiedi prima di comprare"></h3>
-        <p data-t data-en="Scan a barcode mid-aisle and Pip tells you straight whether it is a good buy. No lectures."
+        <h3 data-t data-en="Ask before you buy" data-ja='買う前に聞いてみる' data-zh='买之前先问问' data-ko='사기 전에 물어보세요' data-ar='اسأل قبل أن تشتري' data-it="Chiedi prima di comprare"></h3>
+        <p data-t data-en="Scan a barcode mid-aisle and Pip tells you straight whether it is a good buy. No lectures." data-ja='売り場でバーコードを読み取れば、ピップがいい買い物かどうかをはっきり教えてくれます。お説教はしません。' data-zh='在货架前扫一下条码，皮普会直说这值不值得买。不讲大道理。' data-ko='매대에서 바코드를 스캔하면 핍이 좋은 선택인지 솔직하게 말해 줍니다. 잔소리는 없습니다.' data-ar='امسح باركود في الممر فيخبرك بيب بصراحة إن كان شراءً جيدًا. بلا مواعظ.'
                   data-it="Scansiona un codice a barre in corsia e Pip ti dice chiaro se è un buon acquisto. Senza prediche."></p>
       </div>
       <div class="step">
         <img class="pip" src="img/pip-slide-stocked.png" alt="" width="336" height="289" loading="lazy" decoding="async">
-        <h3 data-t data-en="It all fills your pantry" data-it="Tutto riempie la dispensa"></h3>
-        <p data-t data-en="Good buys stock your shelves and fade as you eat them. Treats get a drawer of their own — no scolding, just your whole picture."
+        <h3 data-t data-en="It all fills your pantry" data-ja='すべてが食料棚を満たす' data-zh='这一切都会填满你的食物柜' data-ko='그 모두가 팬트리를 채웁니다' data-ar='وكلّه يملأ مخزنك' data-it="Tutto riempie la dispensa"></h3>
+        <p data-t data-en="Good buys stock your shelves and fade as you eat them. Treats get a drawer of their own — no scolding, just your whole picture." data-ja='いい買い物は棚に並び、食べるにつれて薄れていきます。ごほうびには専用の引き出しがあり、責めることはありません。ただ全体像が見えるだけです。' data-zh='好的选择会摆上货架，随着吃掉而慢慢褪去。零食有自己的抽屉——不责备，只是把全貌摊开给你看。' data-ko='좋은 선택은 선반을 채우고, 먹는 만큼 흐려집니다. 간식은 전용 서랍에 들어갑니다. 나무라지 않고, 그저 전체 그림을 보여 줄 뿐입니다.' data-ar='المشتريات الجيّدة تملأ رفوفك وتبهت كلّما أكلتها. وللحلويات درجٌ خاص بها — بلا تأنيب، بل صورتك كاملة فحسب.'
                   data-it="Gli acquisti buoni riempiono gli scaffali e sbiadiscono man mano che li mangi. Gli sfizi hanno un cassetto tutto loro — nessun rimprovero, solo il quadro completo."></p>
       </div>
     </div>
   </section>
 
   <section id="shots">
-    <h2 class="head" data-t data-en="What it actually looks like" data-it="Com'è fatta davvero"></h2>
+    <h2 class="head" data-t data-en="What it actually looks like" data-ja='実際の画面' data-zh='实际长什么样' data-ko='실제 화면' data-ar='كيف يبدو فعلًا' data-it="Com'è fatta davvero"></h2>
     <div class="shotstrip">
       <figure>
         <img src="img/shot-cartrun.png" alt="The Catch Cart Run: Pip above a progress bar reading now in Produce, six left, with chunky food tiles below" width="285" height="620" loading="lazy" decoding="async">
-        <figcaption data-t data-en="The list becomes a run. Tap to catch, and keep the chain going." data-it="La lista diventa una corsa. Tocca per prendere, e tieni la catena."></figcaption>
+        <figcaption data-t data-en="The list becomes a run. Tap to catch, and keep the chain going." data-ja='リストがひと勝負になります。タップしてキャッチし、連鎖をつなげて。' data-zh='清单变成一场闯关。点击接住，把连击接下去。' data-ko='목록이 한 판이 됩니다. 탭해서 잡고, 연속을 이어가세요.' data-ar='تتحوّل القائمة إلى جولة. انقر لتلتقط، وواصل السلسلة.' data-it="La lista diventa una corsa. Tocca per prendere, e tieni la catena."></figcaption>
       </figure>
       <figure>
         <img src="img/shot-verdict.png" alt="A scanned product in Catch scoring 46 health, headed Not bad at all, with tags for high in protein and low in sugar" width="285" height="620" loading="lazy" decoding="async">
-        <figcaption data-t data-en="Scan anything mid-aisle and get a straight answer, not a lecture." data-it="Scansiona qualsiasi cosa in corsia e hai una risposta chiara, non una predica."></figcaption>
+        <figcaption data-t data-en="Scan anything mid-aisle and get a straight answer, not a lecture." data-ja='売り場で何でも読み取れば、お説教ではなく率直な答えが返ります。' data-zh='在货架前扫任何东西，得到的是直接的答案，而不是说教。' data-ko='매대에서 무엇이든 스캔하면 설교가 아니라 솔직한 답이 옵니다.' data-ar='امسح أي شيء في الممر لتحصل على إجابة صريحة، لا محاضرة.' data-it="Scansiona qualsiasi cosa in corsia e hai una risposta chiara, non una predica."></figcaption>
       </figure>
       <figure>
         <img src="img/shot-pantry.png" alt="My Pantry in Catch, showing broccoli, salmon, Greek yogurt and apples on wooden shelves with grades and health tags" width="285" height="620" loading="lazy" decoding="async">
-        <figcaption data-t data-en="The pantry — graded, tagged, and fading as you eat it." data-it="La dispensa — con voti, etichette, e che sbiadisce mentre la mangi."></figcaption>
+        <figcaption data-t data-en="The pantry — graded, tagged, and fading as you eat it." data-ja='食料棚 — 採点され、タグがつき、食べるにつれて薄れていきます。' data-zh='食物柜——有评分、有标签，随着吃掉而褪去。' data-ko='팬트리 — 점수와 태그가 붙고, 먹는 만큼 흐려집니다.' data-ar='المخزن — بدرجات ووسوم، ويبهت كلّما أكلت منه.' data-it="La dispensa — con voti, etichette, e che sbiadisce mentre la mangi."></figcaption>
       </figure>
   </section>
 
   <section id="more">
-    <h2 class="head" data-t data-en="What else is in there now" data-it="Cos'altro c'è dentro adesso"></h2>
+    <h2 class="head" data-t data-en="What else is in there now" data-ja='ほかに入っているもの' data-zh='现在里面还有什么' data-ko='그 밖에 무엇이 있나' data-ar='وماذا يضمّ الآن' data-it="Cos'altro c'è dentro adesso"></h2>
     <div class="steps">
       <div class="step">
         <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><rect x="20" y="12" width="60" height="76" rx="10" fill="#EBDDC5"/><path fill="#C67139" d="M20 22a10 10 0 0 1 10-10h40a10 10 0 0 1 10 10v10H20z"/></g><path d="M32 50h36M32 64h26M32 78h32" stroke="#8E4E26" stroke-width="6.5" stroke-linecap="round" fill="none"/></svg></span>
-        <h3 data-t data-en="The numbers behind the verdict" data-it="I numeri dietro al giudizio"></h3>
-        <p data-t data-en="A grade is a judgement, so Catch shows its working: energy, fat, sugars, salt, fibre, protein, and the vitamins where anyone knows them. Blank means nobody has filled it in — it never guesses."
+        <h3 data-t data-en="The numbers behind the verdict" data-ja='判定の裏にある数字' data-zh='评价背后的数字' data-ko='판정 뒤의 숫자' data-ar='الأرقام خلف الحكم' data-it="I numeri dietro al giudizio"></h3>
+        <p data-t data-en="A grade is a judgement, so Catch shows its working: energy, fat, sugars, salt, fibre, protein, and the vitamins where anyone knows them. Blank means nobody has filled it in — it never guesses." data-ja='採点は判断です。だから Catch は計算を見せます。エネルギー、脂質、糖類、塩分、食物繊維、たんぱく質、そして分かっている範囲のビタミン。空欄は誰もまだ書き込んでいないという意味で、推測は決してしません。' data-zh='评分是一种判断，所以 Catch 把算式摊开：能量、脂肪、糖、盐、膳食纤维、蛋白质，以及已知的维生素。空白表示还没有人填过——它从不猜。' data-ko='등급은 판단입니다. 그래서 Catch는 계산을 보여 줍니다. 열량, 지방, 당류, 나트륨, 식이섬유, 단백질, 그리고 알려진 비타민까지. 빈칸은 아직 아무도 채우지 않았다는 뜻이며, 결코 추측하지 않습니다.' data-ar='الدرجة حكم، لذا يعرض Catch حساباته: الطاقة والدهون والسكريات والملح والألياف والبروتين، والفيتامينات حيثما تُعرف. الفراغ يعني أنّ أحدًا لم يدوّنها بعد — وهو لا يخمّن أبدًا.'
                   data-it="Un voto è un giudizio, quindi Catch mostra i conti: energia, grassi, zuccheri, sale, fibre, proteine e le vitamine dove si sanno. Vuoto vuol dire che nessuno l'ha ancora compilato: non tira mai a indovinare."></p>
       </div>
       <div class="step">
         <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#F5615C" d="M36 58l-9 32 23-12 23 12-9-32z"/><circle cx="50" cy="40" r="26" fill="#E0A340"/></g><path d="M40 40l7 8 14-16" stroke="#8E4E26" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
-        <h3 data-t data-en="A better thing, same aisle" data-it="Qualcosa di meglio, stessa corsia"></h3>
-        <p data-t data-en="Scan something and Catch grades the whole aisle, then names a better buy you can actually find — in your country, not somebody else's. Tap it to see why it wins."
+        <h3 data-t data-en="A better thing, same aisle" data-ja='同じ売り場の、もっといいもの' data-zh='同一货架上更好的选择' data-ko='같은 매대의 더 나은 것' data-ar='خيار أفضل، في الممرّ نفسه' data-it="Qualcosa di meglio, stessa corsia"></h3>
+        <p data-t data-en="Scan something and Catch grades the whole aisle, then names a better buy you can actually find — in your country, not somebody else's. Tap it to see why it wins." data-ja='何かを読み取ると Catch は売り場全体を採点し、実際に手に入るもっといい品を挙げます。よその国ではなく、あなたの国で買えるものを。タップすれば、なぜ勝るのかが分かります。' data-zh='扫描某样东西，Catch 会给整个货架打分，然后指出一个你真的买得到的更好选择——在你的国家，而不是别人的国家。点一下就能看到它凭什么胜出。' data-ko='무언가를 스캔하면 Catch가 매대 전체에 점수를 매기고, 실제로 살 수 있는 더 나은 선택을 알려 줍니다. 남의 나라가 아니라 당신의 나라에서요. 탭하면 왜 나은지 볼 수 있습니다.' data-ar='امسح شيئًا فيمنح Catch الممرّ كلّه درجات، ثم يسمّي شراءً أفضل تجده فعلًا — في بلدك، لا في بلدٍ آخر. انقره لترى لماذا تفوّق.'
                   data-it="Scansiona qualcosa e Catch dà un voto a tutta la corsia, poi ti indica un acquisto migliore che trovi davvero — nel tuo paese, non in un altro. Toccalo per vedere perché vince."></p>
       </div>
       <div class="step">
         <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path d="M33 12v14M67 12v14" stroke="#8E4E26" stroke-width="13" stroke-linecap="round"/><rect x="15" y="22" width="70" height="62" rx="10" fill="#EBDDC5"/><path fill="#C67139" d="M15 32a10 10 0 0 1 10-10h50a10 10 0 0 1 10 10v8H15z"/></g><path d="M34 58l10 11 22-24" stroke="#7A8A5E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
-        <h3 data-t data-en="A month with an end to it" data-it="Un mese che finisce"></h3>
-        <p data-t data-en="Every month sets one goal — buy whole foods, shop more food groups, keep it up week after week — and then it is over. Finish it and it counts. Miss it and the next one starts clean."
+        <h3 data-t data-en="A month with an end to it" data-ja='終わりのある一か月' data-zh='一个有终点的月份' data-ko='끝이 있는 한 달' data-ar='شهرٌ له نهاية' data-it="Un mese che finisce"></h3>
+        <p data-t data-en="Every month sets one goal — buy whole foods, shop more food groups, keep it up week after week — and then it is over. Finish it and it counts. Miss it and the next one starts clean." data-ja='毎月ひとつだけ目標が決まります。未加工の食材を買う、食品グループを増やす、週をまたいで続ける。そして月は終わります。達成すれば記録に残り、逃しても翌月はまっさらから始まります。' data-zh='每个月只设一个目标——买天然食材、多覆盖几类食物、一周接一周地坚持——然后它就结束了。完成了就算数；没完成，下个月从头再来。' data-ko='매달 목표는 하나입니다. 가공하지 않은 식재료 사기, 더 많은 식품군 담기, 주마다 꾸준히 이어가기. 그리고 달은 끝납니다. 해내면 기록에 남고, 놓치면 다음 달이 깨끗하게 시작됩니다.' data-ar='كل شهر يضع هدفًا واحدًا — اشترِ أطعمة كاملة، غطِّ مجموعات غذائية أكثر، واظب أسبوعًا بعد أسبوع — ثم ينتهي. أكمِله فيُحتسب، وإن فاتك بدأ الشهر التالي من جديد.'
                   data-it="Ogni mese ha un obiettivo — comprare cibi integri, toccare più gruppi alimentari, tenere il ritmo settimana dopo settimana — e poi finisce. Se lo completi conta. Se lo manchi, il mese dopo riparte pulito."></p>
       </div>
       <div class="step">
         <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#C67139" d="M22 46h56v20c0 12-10 20-28 20s-28-8-28-20z"/><rect x="14" y="34" width="72" height="13" rx="6.5" fill="#8E4E26"/></g><path d="M40 24c0-6 6-7 6-13M58 24c0-6 6-7 6-13" stroke="#6A5F52" stroke-width="5.5" stroke-linecap="round" fill="none"/></svg></span>
-        <h3 data-t data-en="What could I make?" data-it="Cosa posso cucinare?"></h3>
-        <p data-t data-en="Catch looks at what you have actually been buying and suggests two or three dishes. Whatever is missing goes on the list in a tap. It cannot see inside your fridge, and it says so."
+        <h3 data-t data-en="What could I make?" data-ja='何が作れる？' data-zh='我能做点什么？' data-ko='뭘 만들 수 있을까?' data-ar='ماذا يمكنني أن أطبخ؟' data-it="Cosa posso cucinare?"></h3>
+        <p data-t data-en="Catch looks at what you have actually been buying and suggests two or three dishes. Whatever is missing goes on the list in a tap. It cannot see inside your fridge, and it says so." data-ja='Catch は実際に買ってきたものを見て、二つか三つの料理を提案します。足りないものはタップひとつでリストに入ります。冷蔵庫の中までは見えません。そのことも、ちゃんと言います。' data-zh='Catch 看你最近真正买了什么，然后给出两三道菜。缺的东西一键加进清单。它看不到你的冰箱里有什么，而且它会明说。' data-ko='Catch는 당신이 실제로 사 온 것을 보고 두세 가지 요리를 제안합니다. 빠진 재료는 한 번의 탭으로 목록에 들어갑니다. 냉장고 속까지는 볼 수 없고, 그 사실을 그대로 말합니다.' data-ar='ينظر Catch إلى ما اشتريته فعلًا ويقترح طبقين أو ثلاثة. وما ينقص يُضاف إلى القائمة بنقرة. لا يرى داخل ثلاجتك، وهو يقول ذلك صراحةً.'
                   data-it="Catch guarda cosa hai comprato davvero e propone due o tre piatti. Quello che manca finisce nella lista con un tocco. Non può vedere dentro il tuo frigo, e te lo dice."></p>
       </div>
       <div class="step">
         <img class="ico-pip" src="img/pip-crest-mini.png" alt="" width="336" height="336" loading="lazy" decoding="async">
-        <h3 data-t data-en="Pip eats from the shelf" data-it="Pip mangia dallo scaffale"></h3>
-        <p data-t data-en="The one who judges your basket also lives off it. Pip fancies a food group each day, pipes up while you shop, and has a taste of what you have stocked — nothing ever leaves the shelf."
+        <h3 data-t data-en="Pip eats from the shelf" data-ja='ピップは棚から食べる' data-zh='皮普也从柜子里吃' data-ko='핍은 선반에서 먹습니다' data-ar='وبيب يأكل من الرفّ' data-it="Pip mangia dallo scaffale"></h3>
+        <p data-t data-en="The one who judges your basket also lives off it. Pip fancies a food group each day, pipes up while you shop, and has a taste of what you have stocked — nothing ever leaves the shelf." data-ja='あなたのかごを見立てる当人が、そこから食べてもいます。ピップは日ごとに食べたい食品グループがあり、買い物中に声をあげ、棚のものを味見します。棚から何かが減ることはありません。' data-zh='给你的购物篮下判断的那位，也靠它过日子。皮普每天想吃某一类食物，会在你采购时出声，还会尝一口你囤下的东西——但柜子里什么都不会少。' data-ko='당신의 장바구니를 평가하는 그가 거기서 먹기도 합니다. 핍은 매일 먹고 싶은 식품군이 있고, 장을 보는 동안 참견하며, 선반에 둔 것을 맛봅니다. 선반에서 없어지는 것은 없습니다.' data-ar='مَن يحكم على سلّتك يعيش منها أيضًا. لبيب كل يوم مجموعة غذائية يشتهيها، ويعلّق أثناء تسوّقك، ويتذوّق ممّا خزّنته — ولا يغادر الرفَّ شيء أبدًا.'
                   data-it="Quello che giudica il tuo carrello ci vive anche. Pip ogni giorno ha voglia di un gruppo alimentare, si fa sentire mentre fai la spesa e assaggia quello che hai messo da parte — senza portare via niente dallo scaffale."></p>
       </div>
       <div class="step">
         <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><circle cx="50" cy="50" r="33" fill="#7FB2D9"/></g><g stroke="#25476B" stroke-width="4.5" fill="none"><path d="M17 50h66" stroke-linecap="round"/><ellipse cx="50" cy="50" rx="15" ry="33"/></g></svg></span>
-        <h3 data-t data-en="Six languages, and Android" data-it="Sei lingue, e Android"></h3>
-        <p data-t data-en='Korean joined English, Italian, Japanese, Chinese and Arabic — the food tables too, not just the buttons. And Catch builds for Android now: there is a <a href="#android">closed test</a> you can apply to.'
+        <h3 data-t data-en="Six languages, and Android" data-ja='六つの言語、そして Android' data-zh='六种语言，还有 Android' data-ko='여섯 개 언어, 그리고 Android' data-ar='ستّ لغات، و Android' data-it="Sei lingue, e Android"></h3>
+        <p data-t data-en='Korean joined English, Italian, Japanese, Chinese and Arabic — the food tables too, not just the buttons. And Catch builds for Android now: there is a <a href="#android">closed test</a> you can apply to.' data-ja='英語・イタリア語・日本語・中国語・アラビア語に韓国語が加わりました。ボタンだけでなく、食材の表も含めてです。さらに Catch は Android 版もビルドできるようになり、応募できる<a href="#android">クローズドテスト</a>があります。' data-zh='韩语加入了英语、意大利语、日语、中文和阿拉伯语——不只是按钮，连食材表也一并翻译。而且 Catch 现在也能构建 Android 版：有一个你可以申请的<a href="#android">封闭测试</a>。' data-ko='영어, 이탈리아어, 일본어, 중국어, 아랍어에 한국어가 더해졌습니다. 버튼만이 아니라 식품 표까지요. 그리고 이제 Catch는 Android로도 빌드됩니다. 신청할 수 있는 <a href="#android">비공개 테스트</a>가 있습니다.' data-ar='انضمّت الكورية إلى الإنجليزية والإيطالية واليابانية والصينية والعربية — وجداول الأطعمة أيضًا، لا الأزرار وحدها. وصار Catch يُبنى لنظام Android: هناك <a href="#android">اختبار مغلق</a> يمكنك التقدّم إليه.'
                   data-it='Il coreano si è aggiunto a inglese, italiano, giapponese, cinese e arabo — anche nelle tabelle degli alimenti, non solo nei pulsanti. E ora Catch si compila per Android: c&#39;è un <a href="#android">test chiuso</a> a cui candidarti.'></p>
       </div>
     </div>
@@ -338,19 +345,19 @@ footer a{color:var(--coral-deep)}
 
   <section>
     <div class="beta">
-      <h2 data-t data-en="It's a beta, and I need the bad news"
+      <h2 data-t data-en="It's a beta, and I need the bad news" data-ja='これはベータです。悪い知らせこそ聞かせてください' data-zh='这是测试版，我更想听坏消息' data-ko='베타입니다. 나쁜 소식이 필요합니다' data-ar='إنها نسخة تجريبية، وأحتاج الأخبار السيّئة'
                  data-it="È una beta, e mi serve sapere cosa non va"></h2>
       <p class="sub" data-t
-         data-en="I'm one person in Italy building this. It works on my shopping; I have no idea whether it works on yours. Most useful things you could tell me:"
+         data-en="I'm one person in Italy building this. It works on my shopping; I have no idea whether it works on yours. Most useful things you could tell me:" data-ja='イタリアでひとりで作っています。私の買い物では動きますが、あなたの買い物で動くかは分かりません。教えてもらえると特に助かるのは：' data-zh='我在意大利，一个人做这个。它在我的采购里跑得通，但我不知道在你的采购里行不行。最有用的反馈是：' data-ko='이탈리아에서 혼자 만들고 있습니다. 제 장보기에서는 작동하지만, 당신의 장보기에서도 그럴지는 모릅니다. 알려 주시면 가장 도움이 되는 것들:' data-ar='أنا شخصٌ واحد في إيطاليا أبني هذا. يعمل مع تسوّقي أنا، ولا أدري إن كان يعمل مع تسوّقك. أكثر ما يفيدني أن تخبرني به:'
          data-it="Sono una persona sola, in Italia. Funziona sulla mia spesa; non ho idea se funzioni sulla tua. Le cose più utili che puoi dirmi:"></p>
       <ul class="asks">
-        <li data-t data-en="A product you scanned that came back with nothing. Send me the barcode."
+        <li data-t data-en="A product you scanned that came back with nothing. Send me the barcode." data-ja='読み取っても何も返ってこなかった商品。バーコードを送ってください。' data-zh='你扫了却什么都没返回的商品。把条码发给我。' data-ko='스캔했는데 아무것도 나오지 않은 제품. 바코드를 보내 주세요.' data-ar='منتجٌ مسحته ولم يُرجع شيئًا. أرسل لي الباركود.'
                    data-it="Un prodotto che hai scansionato e non è stato riconosciuto. Mandami il codice a barre."></li>
-        <li data-t data-en="A food you typed that the app graded wrongly — in any of its six languages."
+        <li data-t data-en="A food you typed that the app graded wrongly — in any of its six languages." data-ja='入力したのに採点がおかしかった食べ物。六つの言語のどれでも。' data-zh='你输入后被评错了的食物——六种语言里的任何一种。' data-ko='입력했는데 잘못 채점된 음식. 여섯 개 언어 중 무엇이든요.' data-ar='طعامٌ كتبته فقيّمه التطبيق خطأً — بأيٍّ من لغاته الستّ.'
                    data-it="Un alimento che hai scritto e che l'app ha valutato male — in una qualsiasi delle sue sei lingue."></li>
-        <li data-t data-en="Any sentence that reads badly. The Japanese, Chinese and Arabic are machine-translated and no native speaker has checked them."
+        <li data-t data-en="Any sentence that reads badly. The Japanese, Chinese and Arabic are machine-translated and no native speaker has checked them." data-ja='読んで不自然な文。日本語・中国語・韓国語・アラビア語は機械翻訳で、母語話者は誰も確認していません。' data-zh='任何读起来别扭的句子。日语、中文、韩语和阿拉伯语都是机器翻译，没有母语者校对过。' data-ko='어색하게 읽히는 문장. 일본어, 중국어, 한국어, 아랍어는 기계 번역이고 원어민이 확인한 적이 없습니다.' data-ar='أي جملة تبدو ركيكة. اليابانية والصينية والكورية والعربية مترجمة آليًا ولم يراجعها ناطق أصلي.'
                    data-it="Qualsiasi frase scritta male. Giapponese, cinese e arabo sono tradotti a macchina e nessun madrelingua li ha controllati."></li>
-        <li data-t data-en="The moment you got bored and closed it. That one matters most."
+        <li data-t data-en="The moment you got bored and closed it. That one matters most." data-ja='飽きて閉じた瞬間。それがいちばん大事です。' data-zh='你觉得无聊、关掉它的那一刻。那个最重要。' data-ko='지루해져서 앱을 닫은 순간. 그게 가장 중요합니다.' data-ar='اللحظة التي مللت فيها وأغلقته. تلك أهمّها.'
                    data-it="Il momento in cui ti sei annoiato e l'hai chiusa. Quello conta più di tutto."></li>
       </ul>
     </div>
@@ -358,45 +365,45 @@ footer a{color:var(--coral-deep)}
 
   <section id="android">
     <div class="contact-card">
-      <h2 class="head" data-t data-en="Test Catch on Android" data-it="Prova Catch su Android"></h2>
+      <h2 class="head" data-t data-en="Test Catch on Android" data-ja='Android で Catch を試す' data-zh='在 Android 上试用 Catch' data-ko='Android에서 Catch 테스트하기' data-ar='جرّب Catch على Android' data-it="Prova Catch su Android"></h2>
       <p class="sub" data-t
-         data-en="The Android beta is a closed test on Google Play, and Play will not let anyone in who is not already on the list. Send me the Google account you use on your phone and I will add you — you get a link back that installs Catch from the Play Store like any other app."
+         data-en="The Android beta is a closed test on Google Play, and Play will not let anyone in who is not already on the list. Send me the Google account you use on your phone and I will add you — you get a link back that installs Catch from the Play Store like any other app." data-ja='Android のベータは Google Play のクローズドテストです。名簿に載っていない人は Play が中に入れてくれません。お使いの端末にログインしている Google アカウントを送ってください。こちらで追加すると、ほかのアプリと同じように Play ストアから Catch を入れられるリンクが返ります。' data-zh='Android 测试版是 Google Play 上的封闭测试，不在名单里的人 Play 不会放行。把你手机上登录的 Google 账号发给我，我把你加进去，你会收到一个链接，像装别的应用一样从 Play 商店装上 Catch。' data-ko='Android 베타는 Google Play의 비공개 테스트라, 명단에 없는 사람은 Play가 들여보내지 않습니다. 휴대폰에 로그인된 Google 계정을 보내 주시면 제가 추가하고, 다른 앱과 똑같이 Play 스토어에서 Catch를 설치할 수 있는 링크를 보내 드립니다.' data-ar='نسخة Android التجريبية اختبارٌ مغلق على Google Play، ولن يُدخل Play أحدًا ليس على القائمة. أرسل لي حساب Google المسجَّل على هاتفك وسأضيفك — ويصلك رابط يثبّت Catch من متجر Play كأي تطبيق آخر.'
          data-it="La beta Android è un test chiuso su Google Play, e Play non fa entrare nessuno che non sia già nella lista. Mandami l'account Google che usi sul telefono e ti aggiungo io — ti torna un link che installa Catch dal Play Store come qualsiasi altra app."></p>
       <form class="field" id="androidForm">
         <input type="email" id="android-email" required placeholder="you@gmail.com"
                aria-label="Your Google account email" autocomplete="email">
-        <button class="btn btn-main" type="submit"><span data-t data-en="Apply to test" data-it="Candidati"></span></button>
+        <button class="btn btn-main" type="submit"><span data-t data-en="Apply to test" data-ja='テストに応募する' data-zh='申请参加测试' data-ko='테스트 신청하기' data-ar='تقدّم للاختبار' data-it="Candidati"></span></button>
       </form>
       <p class="tiny" data-t
-         data-en='It has to be the Google account signed in on the phone, or Play will not recognise you. This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.'
+         data-en='It has to be the Google account signed in on the phone, or Play will not recognise you. This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.' data-ja='端末にログインしている Google アカウントである必要があります。そうでないと Play が認識しません。メールアプリが本文入りで開くだけで、このページには何も保存されません。直接 <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a> に書いてもかまいません。' data-zh='必须是手机上登录的那个 Google 账号，否则 Play 认不出你。这只会打开你的邮件应用并写好内容——本页不保存任何东西。也可以直接写信到 <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>。' data-ko='휴대폰에 로그인된 Google 계정이어야 합니다. 그렇지 않으면 Play가 알아보지 못합니다. 메일 앱이 내용이 채워진 채로 열릴 뿐, 이 페이지는 아무것도 저장하지 않습니다. <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>으로 바로 쓰셔도 됩니다.' data-ar='يجب أن يكون حساب Google المسجَّل على الهاتف، وإلا لن يتعرّف عليك Play. سيفتح هذا تطبيق بريدك برسالة جاهزة — ولا تخزّن هذه الصفحة شيئًا. أو اكتب مباشرةً إلى <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.'
          data-it='Dev&#39;essere l&#39;account Google con cui sei connesso sul telefono, altrimenti Play non ti riconosce. Si apre la tua app di posta con un messaggio già pronto — questa pagina non salva nulla. Oppure scrivi direttamente a <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.'></p>
     </div>
   </section>
 
   <section id="contact">
     <div class="contact-card">
-      <h2 class="head" data-t data-en="Tell me what broke" data-it="Dimmi cosa si è rotto"></h2>
+      <h2 class="head" data-t data-en="Tell me what broke" data-ja='うまくいかなかったことを教えてください' data-zh='告诉我哪里坏了' data-ko='무엇이 잘못됐는지 알려 주세요' data-ar='أخبرني بما تعطّل' data-it="Dimmi cosa si è rotto"></h2>
       <p class="sub" data-t
-         data-en="The app collects no email and sends no notifications, which means I have no way to reach you unless you write to me. Leave an address and I'll tell you when the thing you reported is fixed — nothing else, ever."
+         data-en="The app collects no email and sends no notifications, which means I have no way to reach you unless you write to me. Leave an address and I'll tell you when the thing you reported is fixed — nothing else, ever." data-ja='アプリはメールアドレスを集めず、通知も送りません。つまり、あなたから書いてもらわないかぎり連絡する手段がありません。アドレスを残してもらえれば、報告いただいた点が直ったときにお知らせします。それ以外には決して使いません。' data-zh='这个应用不收集邮箱，也不发通知，也就是说除非你写信给我，否则我没法联系你。留个地址，等你反馈的问题修好了我会告诉你——除此之外，永远不会有别的。' data-ko='앱은 이메일을 수집하지 않고 알림도 보내지 않습니다. 즉, 먼저 써 주지 않으면 연락할 방법이 없습니다. 주소를 남겨 주시면 알려 주신 문제가 고쳐졌을 때 알려 드립니다. 그 밖의 용도로는 절대 쓰지 않습니다.' data-ar='التطبيق لا يجمع بريدًا ولا يرسل إشعارات، ما يعني أنّه لا سبيل لي للوصول إليك ما لم تكتب لي. اترك عنوانًا وسأخبرك حين يُصلَح ما أبلغت عنه — ولا شيء غير ذلك، أبدًا.'
          data-it="L'app non raccoglie email e non manda notifiche, quindi non ho modo di contattarti se non mi scrivi tu. Lascia un indirizzo e ti dirò quando quello che hai segnalato è sistemato — nient'altro, mai."></p>
       <form class="field" id="mailForm">
         <input type="email" id="email" required placeholder="you@example.com"
                aria-label="Your email" autocomplete="email">
-        <button class="btn btn-main" type="submit"><span data-t data-en="Write to me" data-it="Scrivimi"></span></button>
+        <button class="btn btn-main" type="submit"><span data-t data-en="Write to me" data-ja='メールを書く' data-zh='给我写信' data-ko='메일 보내기' data-ar='اكتب لي' data-it="Scrivimi"></span></button>
       </form>
       <p class="tiny" data-t
-         data-en='This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.'
+         data-en='This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.' data-ja='メールアプリが本文入りで開くだけで、このページには何も保存されません。直接 <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a> に書いてもかまいません。' data-zh='这只会打开你的邮件应用并写好内容——本页不保存任何东西。也可以直接写信到 <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>。' data-ko='메일 앱이 내용이 채워진 채로 열릴 뿐, 이 페이지는 아무것도 저장하지 않습니다. <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>으로 바로 쓰셔도 됩니다.' data-ar='سيفتح هذا تطبيق بريدك برسالة جاهزة — ولا تخزّن هذه الصفحة شيئًا. أو اكتب مباشرةً إلى <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.'
          data-it='Si apre la tua app di posta con un messaggio già pronto — questa pagina non salva nulla. Oppure scrivi direttamente a <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.'></p>
     </div>
   </section>
 
   <footer>
     <p>
-      <span data-t data-en="Catch — made by Alberto Clemente in Italy." data-it="Catch — fatto da Alberto Clemente, in Italia."></span>
-      <a href="https://testflight.apple.com/join/aJTSf47G" data-t data-en="Install the beta" data-it="Installa la beta"></a>
+      <span data-t data-en="Catch — made by Alberto Clemente in Italy." data-ja='Catch — イタリアで Alberto Clemente が作っています。' data-zh='Catch —— 由 Alberto Clemente 在意大利制作。' data-ko='Catch — 이탈리아에서 Alberto Clemente가 만듭니다.' data-ar='Catch — من صنع Alberto Clemente في إيطاليا.' data-it="Catch — fatto da Alberto Clemente, in Italia."></span>
+      <a href="https://testflight.apple.com/join/aJTSf47G" data-t data-en="Install the beta" data-ja='ベータ版をインストール' data-zh='安装测试版' data-ko='베타 설치하기' data-ar='ثبّت النسخة التجريبية' data-it="Installa la beta"></a>
     </p>
     <p class="tiny" data-t
-       data-en="Grades come from Open Food Facts, plus a hand-checked table of about 120 staples."
+       data-en="Grades come from Open Food Facts, plus a hand-checked table of about 120 staples." data-ja='評価は Open Food Facts と、手で確認した約 120 品目の表にもとづいています。' data-zh='评分来自 Open Food Facts，以及一张人工核对过的约 120 种常见食材表。' data-ko='등급은 Open Food Facts와 손으로 확인한 약 120가지 기본 식재료 표에서 나옵니다.' data-ar='الدرجات مصدرها Open Food Facts، إضافةً إلى جدولٍ مُراجَع يدويًا يضمّ نحو 120 صنفًا أساسيًا.'
        data-it="I voti vengono da Open Food Facts, più una tabella di circa 120 alimenti base controllata a mano."></p>
   </footer>
 </div>
@@ -407,8 +414,11 @@ footer a{color:var(--coral-deep)}
 
   /* ── language ─────────────────────────────────────────── */
   var STR = {};
+  var RTL = { ar:1 };
   function apply(lang){
     document.documentElement.lang = lang;
+    /* Arabic reads the other way. Set it on <html> so the whole page mirrors, not just the text. */
+    document.documentElement.dir = RTL[lang] ? "rtl" : "ltr";
     document.querySelectorAll("[data-t]").forEach(function(el){
       var v = el.getAttribute("data-" + lang);
       if (v != null) { el.innerHTML = v; el.style.display = "inline"; }
@@ -510,7 +520,17 @@ footer a{color:var(--coral-deep)}
   /* ── boot ─────────────────────────────────────────────── */
   var saved = null;
   try { saved = localStorage.getItem("catch-lang"); } catch(e){}
-  apply(saved || ((navigator.language || "en").toLowerCase().indexOf("it") === 0 ? "it" : "en"));
+  var SUPPORTED = ["en","it","ja","zh","ko","ar"];
+  function guess(){
+    var tags = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
+    for (var i = 0; i < tags.length; i++) {
+      var base = String(tags[i]).toLowerCase().split("-")[0];
+      /* zh-Hant and zh-Hans both land on the one Chinese we have, which is what the app does too. */
+      if (SUPPORTED.indexOf(base) !== -1) return base;
+    }
+    return "en";
+  }
+  apply(SUPPORTED.indexOf(saved) !== -1 ? saved : guess());
 })();
 </script>
 </body>
