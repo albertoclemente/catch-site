@@ -136,6 +136,15 @@ h2.head{font-size:clamp(28px,4vw,40px); margin-bottom:10px}
   font-family:Caprasimo,serif; font-size:36px; color:var(--shelf);
   line-height:1; display:block; margin-bottom:10px;
 }
+.step .pip{display:block; width:104px; height:auto; margin:-4px 0 12px}
+.step .ico{display:block; margin-bottom:10px}
+.step .ico svg{width:64px; height:64px; display:block}
+.step .ico-pip{display:block; width:64px; height:64px; margin-bottom:10px}
+.steps.four{grid-template-columns:repeat(4,1fr)}
+.shotstrip{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:32px; align-items:start}
+.shotstrip figure{margin:0}
+.shotstrip img{width:100%; height:auto; border-radius:22px; border:3px solid rgba(107,74,50,.11); box-shadow:0 8px 0 rgba(107,74,50,.07); display:block; background:#fff}
+.shotstrip figcaption{margin-top:12px; color:var(--ink-soft); font-size:15px; line-height:1.5}
 .step h3{font-size:20px; margin-bottom:8px}
 .step p{margin:0; color:var(--ink-soft); font-size:15.5px}
 
@@ -158,11 +167,13 @@ h2.head{font-size:clamp(28px,4vw,40px); margin-bottom:10px}
 footer{padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:14px}
 footer a{color:var(--coral-deep)}
 
+@media (max-width:1040px){.steps.four{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){
   .hero{grid-template-columns:1fr; gap:26px; padding-top:28px}
   .shots{min-height:340px}
   .shots img{width:172px}
-  .steps{grid-template-columns:1fr}
+  .steps,.steps.four{grid-template-columns:1fr}
+  .shotstrip{grid-template-columns:1fr; max-width:340px; margin-inline:auto}
   .item svg{max-width:64px}
   .item b{font-size:11px}
 }
@@ -194,8 +205,8 @@ footer a{color:var(--coral-deep)}
         <em data-t data-en="Watch a pantry grow." data-it="Guarda crescere la dispensa."></em>
       </h1>
       <p class="lede" data-t
-         data-en="Photograph your shopping list and it becomes a checklist. Then the run itself is a game — catch what you buy, keep a combo going, level up. What's genuinely good food ends up on a pantry shelf, and that shelf fades if you stop buying it."
-         data-it="Fotografi la lista della spesa e diventa una checklist. Poi la spesa stessa è un gioco: prendi quello che compri, tieni la combo, sali di livello. Il cibo davvero sano finisce sullo scaffale della dispensa, e quello scaffale sbiadisce se smetti di comprarlo."></p>
+         data-en="Other grocery apps hand you points. Catch hands you a mirror. Photograph any shopping list and it lands sorted by aisle, so you walk the shop once — and what you actually buy stocks a pantry shelf that fades if you stop."
+         data-it="Le altre app della spesa ti danno punti. Catch ti dà uno specchio. Fotografi una lista qualsiasi e arriva ordinata per corsia, così giri il negozio una volta sola — e quello che compri davvero riempie uno scaffale che sbiadisce se smetti."></p>
       <div class="cta">
         <a class="btn btn-main" href="https://testflight.apple.com/join/aJTSf47G">
           <svg width="19" height="22" viewBox="0 0 17 20" fill="currentColor" aria-hidden="true"><path d="M14.1 10.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.3-.9-2.3-3.6zM11.9 3.5c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.7-1.3z"/></svg>
@@ -204,8 +215,8 @@ footer a{color:var(--coral-deep)}
         <a class="btn btn-ghost" href="#how"><span data-t data-en="How it works" data-it="Come funziona"></span></a>
       </div>
       <p class="note" data-t
-         data-en="iPhone only, one tap, no signup and no account. Free, and it stays free."
-         data-it="Solo iPhone, un tap, senza registrazione e senza account. Gratis, e resta gratis."></p>
+         data-en='iPhone: one tap, no signup and no account. The beta costs nothing. On Android? <a href="#android">Apply to the closed test</a>.'
+         data-it='iPhone: un tap, senza registrazione e senza account. La beta non costa nulla. Su Android? <a href="#android">Candidati al test chiuso</a>.'></p>
     </div>
     <div class="shots">
       <img src="img/pantry.png" alt="The pantry shelf in Catch, showing graded foods" loading="lazy">
@@ -237,25 +248,90 @@ footer a{color:var(--coral-deep)}
   </section>
 
   <section>
-    <h2 class="head" data-t data-en="Three things, that's all it is" data-it="Tre cose, tutto qui"></h2>
+    <h2 class="head" data-t data-en="Four things, that's all it is" data-it="Quattro cose, tutto qui"></h2>
+    <div class="steps four">
+      <div class="step">
+        <img class="pip" src="img/pip-slide-snap.png" alt="" width="336" height="289" loading="lazy" decoding="async">
+        <h3 data-t data-en="Snap your list" data-it="Fotografa la lista"></h3>
+        <p data-t data-en="Point the camera at any list — handwritten, printed, a sticky note. It lands sorted by aisle, so you walk the shop once."
+                  data-it="Punta la fotocamera su una lista qualsiasi — scritta a mano, stampata, un post-it. Arriva ordinata per corsia, così giri il negozio una volta sola."></p>
+      </div>
+      <div class="step">
+        <img class="pip" src="img/pip-slide-catch.png" alt="" width="336" height="289" loading="lazy" decoding="async">
+        <h3 data-t data-en="Catch it in the aisle" data-it="Prendilo nella corsia"></h3>
+        <p data-t data-en="In the shop, tap an item and Pip catches it in his basket. Keep the chain going and the run gets loud."
+                  data-it="Nel negozio, tocca un articolo e Pip lo prende al volo nel cesto. Tieni la catena e la spesa si accende."></p>
+      </div>
+      <div class="step">
+        <img class="pip" src="img/pip-slide-think.png" alt="" width="336" height="289" loading="lazy" decoding="async">
+        <h3 data-t data-en="Ask before you buy" data-it="Chiedi prima di comprare"></h3>
+        <p data-t data-en="Scan a barcode mid-aisle and Pip tells you straight whether it is a good buy. No lectures."
+                  data-it="Scansiona un codice a barre in corsia e Pip ti dice chiaro se è un buon acquisto. Senza prediche."></p>
+      </div>
+      <div class="step">
+        <img class="pip" src="img/pip-slide-stocked.png" alt="" width="336" height="289" loading="lazy" decoding="async">
+        <h3 data-t data-en="It all fills your pantry" data-it="Tutto riempie la dispensa"></h3>
+        <p data-t data-en="Good buys stock your shelves and fade as you eat them. Treats get a drawer of their own — no scolding, just your whole picture."
+                  data-it="Gli acquisti buoni riempiono gli scaffali e sbiadiscono man mano che li mangi. Gli sfizi hanno un cassetto tutto loro — nessun rimprovero, solo il quadro completo."></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="shots">
+    <h2 class="head" data-t data-en="What it actually looks like" data-it="Com'è fatta davvero"></h2>
+    <div class="shotstrip">
+      <figure>
+        <img src="img/shot-cartrun.png" alt="The Catch Cart Run: Pip above a progress bar reading now in Produce, six left, with chunky food tiles below" width="285" height="620" loading="lazy" decoding="async">
+        <figcaption data-t data-en="The list becomes a run. Tap to catch, and keep the chain going." data-it="La lista diventa una corsa. Tocca per prendere, e tieni la catena."></figcaption>
+      </figure>
+      <figure>
+        <img src="img/shot-verdict.png" alt="A scanned product in Catch scoring 46 health, headed Not bad at all, with tags for high in protein and low in sugar" width="285" height="620" loading="lazy" decoding="async">
+        <figcaption data-t data-en="Scan anything mid-aisle and get a straight answer, not a lecture." data-it="Scansiona qualsiasi cosa in corsia e hai una risposta chiara, non una predica."></figcaption>
+      </figure>
+      <figure>
+        <img src="img/shot-pantry.png" alt="My Pantry in Catch, showing broccoli, salmon, Greek yogurt and apples on wooden shelves with grades and health tags" width="285" height="620" loading="lazy" decoding="async">
+        <figcaption data-t data-en="The pantry — graded, tagged, and fading as you eat it." data-it="La dispensa — con voti, etichette, e che sbiadisce mentre la mangi."></figcaption>
+      </figure>
+  </section>
+
+  <section id="more">
+    <h2 class="head" data-t data-en="What else is in there now" data-it="Cos'altro c'è dentro adesso"></h2>
     <div class="steps">
       <div class="step">
-        <span class="n">1</span>
-        <h3 data-t data-en="Scan, or snap the list" data-it="Scansiona, o fotografa la lista"></h3>
-        <p data-t data-en="A barcode gets a real grade. A photo of your handwritten list becomes a checklist."
-                  data-it="Un codice a barre riceve un voto vero. Una foto della lista scritta a mano diventa una checklist."></p>
+        <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><rect x="20" y="12" width="60" height="76" rx="10" fill="#EBDDC5"/><path fill="#C67139" d="M20 22a10 10 0 0 1 10-10h40a10 10 0 0 1 10 10v10H20z"/></g><path d="M32 50h36M32 64h26M32 78h32" stroke="#8E4E26" stroke-width="6.5" stroke-linecap="round" fill="none"/></svg></span>
+        <h3 data-t data-en="The numbers behind the verdict" data-it="I numeri dietro al giudizio"></h3>
+        <p data-t data-en="A grade is a judgement, so Catch shows its working: energy, fat, sugars, salt, fibre, protein, and the vitamins where anyone knows them. Blank means nobody has filled it in — it never guesses."
+                  data-it="Un voto è un giudizio, quindi Catch mostra i conti: energia, grassi, zuccheri, sale, fibre, proteine e le vitamine dove si sanno. Vuoto vuol dire che nessuno l'ha ancora compilato: non tira mai a indovinare."></p>
       </div>
       <div class="step">
-        <span class="n">2</span>
-        <h3 data-t data-en="Good food stocks the shelf" data-it="Il cibo buono riempie lo scaffale"></h3>
-        <p data-t data-en="Only what's genuinely good gets in. Everything else goes quietly in a drawer — no scolding, it just isn't on the shelf."
-                  data-it="Entra solo quello che è davvero sano. Il resto finisce in un cassetto, senza rimproveri: semplicemente non è sullo scaffale."></p>
+        <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#F5615C" d="M36 58l-9 32 23-12 23 12-9-32z"/><circle cx="50" cy="40" r="26" fill="#E0A340"/></g><path d="M40 40l7 8 14-16" stroke="#8E4E26" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+        <h3 data-t data-en="A better thing, same aisle" data-it="Qualcosa di meglio, stessa corsia"></h3>
+        <p data-t data-en="Scan something and Catch grades the whole aisle, then names a better buy you can actually find — in your country, not somebody else's. Tap it to see why it wins."
+                  data-it="Scansiona qualcosa e Catch dà un voto a tutta la corsia, poi ti indica un acquisto migliore che trovi davvero — nel tuo paese, non in un altro. Toccalo per vedere perché vince."></p>
       </div>
       <div class="step">
-        <span class="n">3</span>
-        <h3 data-t data-en="The shelf fades" data-it="Lo scaffale sbiadisce"></h3>
-        <p data-t data-en="Stop buying vegetables and that shelf goes quiet. Buy them again and it fills back up."
-                  data-it="Smetti di comprare verdura e quello scaffale si spegne. Ricomincia e si riempie di nuovo."></p>
+        <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path d="M33 12v14M67 12v14" stroke="#8E4E26" stroke-width="13" stroke-linecap="round"/><rect x="15" y="22" width="70" height="62" rx="10" fill="#EBDDC5"/><path fill="#C67139" d="M15 32a10 10 0 0 1 10-10h50a10 10 0 0 1 10 10v8H15z"/></g><path d="M34 58l10 11 22-24" stroke="#7A8A5E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+        <h3 data-t data-en="A month with an end to it" data-it="Un mese che finisce"></h3>
+        <p data-t data-en="Every month sets one goal — buy whole foods, shop more food groups, keep it up week after week — and then it is over. Finish it and it counts. Miss it and the next one starts clean."
+                  data-it="Ogni mese ha un obiettivo — comprare cibi integri, toccare più gruppi alimentari, tenere il ritmo settimana dopo settimana — e poi finisce. Se lo completi conta. Se lo manchi, il mese dopo riparte pulito."></p>
+      </div>
+      <div class="step">
+        <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><path fill="#C67139" d="M22 46h56v20c0 12-10 20-28 20s-28-8-28-20z"/><rect x="14" y="34" width="72" height="13" rx="6.5" fill="#8E4E26"/></g><path d="M40 24c0-6 6-7 6-13M58 24c0-6 6-7 6-13" stroke="#6A5F52" stroke-width="5.5" stroke-linecap="round" fill="none"/></svg></span>
+        <h3 data-t data-en="What could I make?" data-it="Cosa posso cucinare?"></h3>
+        <p data-t data-en="Catch looks at what you have actually been buying and suggests two or three dishes. Whatever is missing goes on the list in a tap. It cannot see inside your fridge, and it says so."
+                  data-it="Catch guarda cosa hai comprato davvero e propone due o tre piatti. Quello che manca finisce nella lista con un tocco. Non può vedere dentro il tuo frigo, e te lo dice."></p>
+      </div>
+      <div class="step">
+        <img class="ico-pip" src="img/pip-crest-mini.png" alt="" width="336" height="336" loading="lazy" decoding="async">
+        <h3 data-t data-en="Pip eats from the shelf" data-it="Pip mangia dallo scaffale"></h3>
+        <p data-t data-en="The one who judges your basket also lives off it. Pip fancies a food group each day, pipes up while you shop, and has a taste of what you have stocked — nothing ever leaves the shelf."
+                  data-it="Quello che giudica il tuo carrello ci vive anche. Pip ogni giorno ha voglia di un gruppo alimentare, si fa sentire mentre fai la spesa e assaggia quello che hai messo da parte — senza portare via niente dallo scaffale."></p>
+      </div>
+      <div class="step">
+        <span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g stroke="#fff" stroke-width="7" stroke-linejoin="round"><circle cx="50" cy="50" r="33" fill="#7FB2D9"/></g><g stroke="#25476B" stroke-width="4.5" fill="none"><path d="M17 50h66" stroke-linecap="round"/><ellipse cx="50" cy="50" rx="15" ry="33"/></g></svg></span>
+        <h3 data-t data-en="Six languages, and Android" data-it="Sei lingue, e Android"></h3>
+        <p data-t data-en='Korean joined English, Italian, Japanese, Chinese and Arabic — the food tables too, not just the buttons. And Catch builds for Android now: there is a <a href="#android">closed test</a> you can apply to.'
+                  data-it='Il coreano si è aggiunto a inglese, italiano, giapponese, cinese e arabo — anche nelle tabelle degli alimenti, non solo nei pulsanti. E ora Catch si compila per Android: c&#39;è un <a href="#android">test chiuso</a> a cui candidarti.'></p>
       </div>
     </div>
   </section>
@@ -270,13 +346,30 @@ footer a{color:var(--coral-deep)}
       <ul class="asks">
         <li data-t data-en="A product you scanned that came back with nothing. Send me the barcode."
                    data-it="Un prodotto che hai scansionato e non è stato riconosciuto. Mandami il codice a barre."></li>
-        <li data-t data-en="A food you typed that the app graded wrongly — in any of its five languages."
-                   data-it="Un alimento che hai scritto e che l'app ha valutato male — in una qualsiasi delle sue cinque lingue."></li>
+        <li data-t data-en="A food you typed that the app graded wrongly — in any of its six languages."
+                   data-it="Un alimento che hai scritto e che l'app ha valutato male — in una qualsiasi delle sue sei lingue."></li>
         <li data-t data-en="Any sentence that reads badly. The Japanese, Chinese and Arabic are machine-translated and no native speaker has checked them."
                    data-it="Qualsiasi frase scritta male. Giapponese, cinese e arabo sono tradotti a macchina e nessun madrelingua li ha controllati."></li>
         <li data-t data-en="The moment you got bored and closed it. That one matters most."
                    data-it="Il momento in cui ti sei annoiato e l'hai chiusa. Quello conta più di tutto."></li>
       </ul>
+    </div>
+  </section>
+
+  <section id="android">
+    <div class="contact-card">
+      <h2 class="head" data-t data-en="Test Catch on Android" data-it="Prova Catch su Android"></h2>
+      <p class="sub" data-t
+         data-en="The Android beta is a closed test on Google Play, and Play will not let anyone in who is not already on the list. Send me the Google account you use on your phone and I will add you — you get a link back that installs Catch from the Play Store like any other app."
+         data-it="La beta Android è un test chiuso su Google Play, e Play non fa entrare nessuno che non sia già nella lista. Mandami l'account Google che usi sul telefono e ti aggiungo io — ti torna un link che installa Catch dal Play Store come qualsiasi altra app."></p>
+      <form class="field" id="androidForm">
+        <input type="email" id="android-email" required placeholder="you@gmail.com"
+               aria-label="Your Google account email" autocomplete="email">
+        <button class="btn btn-main" type="submit"><span data-t data-en="Apply to test" data-it="Candidati"></span></button>
+      </form>
+      <p class="tiny" data-t
+         data-en='It has to be the Google account signed in on the phone, or Play will not recognise you. This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.'
+         data-it='Dev&#39;essere l&#39;account Google con cui sei connesso sul telefono, altrimenti Play non ti riconosce. Si apre la tua app di posta con un messaggio già pronto — questa pagina non salva nulla. Oppure scrivi direttamente a <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.'></p>
     </div>
   </section>
 
@@ -303,8 +396,8 @@ footer a{color:var(--coral-deep)}
       <a href="https://testflight.apple.com/join/aJTSf47G" data-t data-en="Install the beta" data-it="Installa la beta"></a>
     </p>
     <p class="tiny" data-t
-       data-en="Grades come from Open Food Facts, plus a hand-checked table of about 110 staples."
-       data-it="I voti vengono da Open Food Facts, più una tabella di circa 110 alimenti base controllata a mano."></p>
+       data-en="Grades come from Open Food Facts, plus a hand-checked table of about 120 staples."
+       data-it="I voti vengono da Open Food Facts, più una tabella di circa 120 alimenti base controllata a mano."></p>
   </footer>
 </div>
 
@@ -398,6 +491,18 @@ footer a{color:var(--coral-deep)}
     var body = (it
       ? "Ciao Alberto,\n\nHo provato Catch e ho notato questo:\n\n\n\n(Il mio indirizzo: " + addr + ")"
       : "Hi Alberto,\n\nI tried Catch and noticed this:\n\n\n\n(My address: " + addr + ")");
+    window.location.href = "mailto:clemalb@gmail.com?subject=" + encodeURIComponent(subject) +
+                           "&body=" + encodeURIComponent(body);
+  });
+
+  document.getElementById("androidForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var addr = document.getElementById("android-email").value.trim();
+    var it = (STR.lang === "it");
+    var subject = it ? "Catch \u2014 candidatura alla beta Android" : "Catch \u2014 Android beta application";
+    var body = (it
+      ? "Ciao Alberto,\n\nVorrei provare la beta Android di Catch.\n\nAccount Google del telefono: " + addr + "\nModello del telefono e versione di Android:\n\n"
+      : "Hi Alberto,\n\nI would like to test the Catch Android beta.\n\nGoogle account on my phone: " + addr + "\nPhone model and Android version:\n\n");
     window.location.href = "mailto:clemalb@gmail.com?subject=" + encodeURIComponent(subject) +
                            "&body=" + encodeURIComponent(body);
   });
