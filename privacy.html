@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Catch — Privacy Policy</title>
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="img/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- GENERATED FILE — do not edit. Source: legal/privacy.html
+     in the catch_grocery_app repo. Regenerate with: node scripts/sync-legal-to-site.mjs -->
+<style>
+  :root{
+    --cream:#F5EAD8; --paper:#EBDDC5; --shelf:#C67139; --coral:#F5615C; --coral-deep:#C93F3A;
+    --ink:#201E1D; --ink-soft:#6A5F52; --r:16px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:Figtree,ui-sans-serif,system-ui,sans-serif; font-size:17px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* Same paper grain as the front page, so this does not read like a different site. */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative; z-index:1; max-width:720px; margin:0 auto; padding:0 22px}
+  header{padding:44px 0 6px}
+  .back{color:var(--coral-deep); font-weight:700; text-decoration:none; font-size:14px}
+  .back:hover{text-decoration:underline}
+  h1{font-family:Caprasimo,Georgia,serif; font-weight:400; line-height:1.06; font-size:clamp(34px,5vw,52px); margin:16px 0 6px}
+  h2{font-family:Caprasimo,Georgia,serif; font-weight:400; line-height:1.12; font-size:clamp(21px,2.6vw,26px); margin:34px 0 8px}
+  .updated{color:var(--ink-soft); font-size:14px; margin:0 0 18px}
+  .lead{background:var(--paper); border-radius:var(--r); padding:18px 22px; font-weight:600}
+  a{color:var(--coral-deep); font-weight:600; text-decoration:none}
+  a:hover{text-decoration:underline}
+  ul{padding-left:20px}
+  strong{font-weight:800}
+  footer{padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:14px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="back" href="./">← Back to Catch</a>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: 5 August 2026</p>
+    </header>
+
+<p class="lead">Catch has no account and no tracking. Your lists, your pantry and your progress stay on your device. What does leave it: a list photo you choose to scan, which goes to Anthropic (Claude) to be read; the barcode or name of a food being graded, which goes to Open Food Facts to be looked up; the names of the food on your pantry shelf, if you ask Catch for dish ideas, which go to Anthropic so it can suggest something to cook; and, if you subscribe to Catch Pro, the purchase itself, which goes to RevenueCat so the subscription keeps working when you change phone.</p>
+
+    <h2>What we collect</h2>
+    <p>Catch has no account system and no advertising SDKs, and it collects nothing about how you use the app — no launches, no taps, no screens, no sessions. There is no identity here to attach anything to, and we do not know who you are. Data leaves your device on the paths described below: <strong>scanning a list</strong>, <strong>looking up a food</strong> so it can be graded, and <strong>subscribing to Catch Pro</strong>. None of them carries your name, a device or advertising identifier, or anything from your lists beyond the one item being looked up.</p>
+
+    <h2>Data stored on your device</h2>
+    <p>The following is stored <strong>only locally</strong> on your phone and never leaves it:</p>
+    <ul>
+      <li>Your grocery lists and items.</li>
+      <li>Your pantry, your treat drawer, and the food grades Catch has already fetched.</li>
+      <li>Your game progress (XP, level, streak, achievements, quests, statistics).</li>
+      <li>Your app settings (theme, haptics, language, display name).</li>
+    </ul>
+    <p>This data lives in your device's local storage. Deleting the app removes it permanently.</p>
+
+    <h2>Camera and photos</h2>
+    <ul>
+      <li>Catch uses the <strong>camera</strong> (or a <strong>photo you pick</strong> from your library) to capture a grocery list.</li>
+      <li><strong>Scanning uses Anthropic (Claude):</strong> the list photo you scan is sent to our text-recognition provider, <strong>Anthropic</strong>, solely to read the item text and return it to the app. It travels through a small relay we run, which holds the API key so that no secret ships inside the app; the relay passes the photo straight through and keeps no copy. You must give <strong>explicit consent</strong> first (asked before your first scan; off until you accept), and you can withdraw it at any time in <strong>Profile → Settings → Scan with Claude</strong> — scanning is unavailable while it is off. The image is used only for that recognition — <strong>not</strong> for advertising, profiling, or model training — and is not retained beyond what is needed to process the request and the provider's limited abuse-prevention purposes. The recognized item text is stored only on your device.</li>
+    </ul>
+    <p>You can grant or revoke camera and photo access at any time in your phone’s settings — <strong>Settings → Catch</strong> on iOS, <strong>Settings → Apps → Catch → Permissions</strong> on Android.</p>
+
+    <h2>Food grades and product lookups</h2>
+    <p>Catch tells you whether something is a good buy, and stocks your pantry from what you actually bought. Those verdicts come from <strong>Open Food Facts</strong>, a free, public, crowdsourced food database. Two things ask it a question:</p>
+    <ul>
+      <li><strong>Scanning a product barcode</strong> sends that barcode to Open Food Facts, which returns the product's name, brand, Nutri-Score, NOVA group and additives.</li>
+      <li><strong>Checking off an item you wrote yourself</strong>, or one read from a scanned list, can send that single item's name — "greek yogurt" — to be searched, so your pantry gets a real grade instead of a guess. Catch answers from a built-in table of common foods and from grades already cached on your phone first, so a name is only sent when neither of those knows it, and a grade that comes back is kept on your device so that food is not looked up again.</li>
+    </ul>
+    <p>A lookup carries the barcode or the one food name, plus the identification Open Food Facts asks every client to send: the app's name, its version, and an address to write to if the app misbehaves — ours, not yours. Nothing else goes with it. Depending on the build, the name search either goes to Open Food Facts directly or through a small caching relay we run, which forwards the same query and keeps the answer against that search term for about a week, so the next person asking is served without troubling them again. Neither we nor Open Food Facts can tie these requests to you beyond the network address that every internet request necessarily reveals. Unlike scanning a photo, these lookups are not behind a separate consent prompt: they are what makes a grade honest rather than guessed, and they carry nothing that identifies you.</p>
+
+    <h2>Dish ideas</h2>
+    <p>If you have Catch Pro, the pantry offers to suggest a few dishes from what you have been buying. This is <strong>off until you ask for it</strong>: the first time you press the button, Catch tells you what it is about to send and does nothing unless you agree, and you can withdraw that at any time in <strong>Profile &rarr; Settings &rarr; Dish ideas</strong>.</p>
+    <ul>
+      <li><strong>What is sent:</strong> the <em>names</em> of the food currently on your pantry shelf &mdash; "spinach", "greek yogurt" &mdash; and the language you are reading the app in. Nothing else. No photo, no shopping list, no grades, no history, no name, and no identifier for you or your device.</li>
+      <li><strong>Where it goes:</strong> to <strong>Anthropic</strong> (Claude), through the same small relay described above, which holds the API key so no secret ships inside the app and keeps no copy of what passes through. Anthropic returns a few dish suggestions, which are shown to you and kept on your device.</li>
+      <li><strong>What it is not used for:</strong> not advertising, not profiling, and not model training. It is not retained beyond what is needed to answer the request and the provider's limited abuse-prevention purposes.</li>
+      <li><strong>This is a suggestion, not a recipe service.</strong> Catch does not know what is actually in your kitchen &mdash; the pantry records what you bought, it fades on a timer, and it has never known a quantity. Treat what comes back as an idea, and use your own judgement about what is safe and fresh to cook.</li>
+    </ul>
+
+    <h2>Sharing</h2>
+    <p>When you tap "Share" on a list, your device's standard share sheet opens so <em>you</em> can send the list text via the app of your choice. Catch does not transmit anything on its own.</p>
+
+    <h2>Third parties</h2>
+    <p>Catch includes no third-party tracking or advertising, and nothing watches how you use the app. The outside services that receive anything are these. <strong>Anthropic</strong> receives a scanned list photo, only after <em>you</em> have consented, and only to perform text recognition; and, if you separately ask for dish ideas, the names of the food on your pantry shelf, only to suggest something to cook. The two are asked for separately and can be turned off separately. <strong>Open Food Facts</strong> receives a barcode or a single food name, and only to return that food's public nutrition data. <strong>RevenueCat</strong> receives your App Store or Google Play purchase if you subscribe to Catch Pro, so the subscription can be validated and restored on a new device; it identifies your install by an anonymous ID it generates itself, never by a name or an account, and we use its dashboard to see how many people subscribe and stay — which is analytics on purchases, and on nothing else. The two relays described above — the one holding the Anthropic key, the one caching food searches — are small serverless functions on hosting we rent from Vercel, which carries that traffic on its way through as any host in the path does.</p>
+
+    <h2>Children's privacy</h2>
+    <p>Catch does not collect personal information to build a profile of anyone, including children. The app is rated 4+ and contains no objectionable content.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the "Last updated" date above will change accordingly. Material changes will be reflected in an app update.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? Email <a href="mailto:clemalb@gmail.com">clemalb@gmail.com</a>.</p>
+
+    <footer>
+      Catch — made by Alberto Clemente.
+      <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="./">Home</a>
+    </footer>
+  </div>
+</body>
+</html>
