@@ -166,6 +166,10 @@ h2.head{font-size:clamp(28px,4vw,40px); margin-bottom:10px}
 }
 .field input:focus{outline:none; border-color:var(--coral)}
 .tiny{font-size:13.5px; color:var(--ink-soft); margin-top:14px}
+.fallback{margin-top:16px; padding:16px 18px; border-radius:20px; background:var(--cream); border:2px solid rgba(107,74,50,.14)}
+.fallback[hidden]{display:none}
+.fallback .tiny{margin-top:0}
+.fallback .field{margin-top:12px}
 .tiny a{color:var(--coral-deep)}
 footer{padding:40px 0 60px; text-align:center; color:var(--ink-soft); font-size:14px}
 footer a{color:var(--coral-deep)}
@@ -374,6 +378,13 @@ footer a{color:var(--coral-deep)}
                aria-label="Your Google account email" autocomplete="email">
         <button class="btn btn-main" type="submit"><span data-t data-en="Apply to test" data-ja='テストに応募する' data-zh='申请参加测试' data-ko='테스트 신청하기' data-ar='تقدّم للاختبار' data-it="Candidati"></span></button>
       </form>
+      <div class="fallback" id="androidFallback" hidden>
+        <p class="tiny" data-t data-en="Your mail app should be opening. If nothing happened — many desktop browsers and in-app browsers block mail links — use one of these instead:" data-ja="メールアプリが開くはずです。何も起きなかった場合（パソコンのブラウザやアプリ内ブラウザはメールのリンクを塞ぐことがあります）、こちらをお使いください:" data-zh="你的邮件应用应该会打开。如果什么都没发生——很多电脑浏览器和应用内浏览器会拦截邮件链接——请改用下面任意一个：" data-ko="메일 앱이 열릴 것입니다. 아무 일도 일어나지 않았다면 — 데스크톱 브라우저나 앱 안의 브라우저는 메일 링크를 막는 경우가 많습니다 — 아래 중 하나를 사용하세요:" data-ar="من المفترض أن يفتح تطبيق بريدك. وإن لم يحدث شيء — فكثير من متصفّحات الحاسوب والمتصفّحات داخل التطبيقات تحجب روابط البريد — فاستخدم أحد هذين:" data-it="Dovrebbe aprirsi la tua app di posta. Se non è successo nulla — molti browser da computer e quelli dentro le app bloccano i link di posta — usa una di queste:"></p>
+        <div class="field">
+          <a class="btn btn-main" id="androidGmail" href="#" target="_blank" rel="noopener"><span data-t data-en="Open in Gmail" data-ja="Gmail で開く" data-zh="在 Gmail 中打开" data-ko="Gmail에서 열기" data-ar="افتح في Gmail" data-it="Apri in Gmail"></span></a>
+          <button class="btn btn-ghost" type="button" id="androidCopy"><span data-t data-en="Copy the message" data-ja="メッセージをコピー" data-zh="复制这条消息" data-ko="메시지 복사" data-ar="انسخ الرسالة" data-it="Copia il messaggio"></span></button>
+        </div>
+      </div>
       <p class="tiny" data-t
          data-en='It has to be the Google account signed in on the phone, or Play will not recognise you. This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.' data-ja='端末にログインしている Google アカウントである必要があります。そうでないと Play が認識しません。メールアプリが本文入りで開くだけで、このページには何も保存されません。直接 <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a> に書いてもかまいません。' data-zh='必须是手机上登录的那个 Google 账号，否则 Play 认不出你。这只会打开你的邮件应用并写好内容——本页不保存任何东西。也可以直接写信到 <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>。' data-ko='휴대폰에 로그인된 Google 계정이어야 합니다. 그렇지 않으면 Play가 알아보지 못합니다. 메일 앱이 내용이 채워진 채로 열릴 뿐, 이 페이지는 아무것도 저장하지 않습니다. <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>으로 바로 쓰셔도 됩니다.' data-ar='يجب أن يكون حساب Google المسجَّل على الهاتف، وإلا لن يتعرّف عليك Play. سيفتح هذا تطبيق بريدك برسالة جاهزة — ولا تخزّن هذه الصفحة شيئًا. أو اكتب مباشرةً إلى <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.'
          data-it='Dev&#39;essere l&#39;account Google con cui sei connesso sul telefono, altrimenti Play non ti riconosce. Si apre la tua app di posta con un messaggio già pronto — questa pagina non salva nulla. Oppure scrivi direttamente a <a href="mailto:clemalb@gmail.com?subject=Catch%20Android%20beta">clemalb@gmail.com</a>.'></p>
@@ -391,6 +402,13 @@ footer a{color:var(--coral-deep)}
                aria-label="Your email" autocomplete="email">
         <button class="btn btn-main" type="submit"><span data-t data-en="Write to me" data-ja='メールを書く' data-zh='给我写信' data-ko='메일 보내기' data-ar='اكتب لي' data-it="Scrivimi"></span></button>
       </form>
+      <div class="fallback" id="mailFallback" hidden>
+        <p class="tiny" data-t data-en="Your mail app should be opening. If nothing happened — many desktop browsers and in-app browsers block mail links — use one of these instead:" data-ja="メールアプリが開くはずです。何も起きなかった場合（パソコンのブラウザやアプリ内ブラウザはメールのリンクを塞ぐことがあります）、こちらをお使いください:" data-zh="你的邮件应用应该会打开。如果什么都没发生——很多电脑浏览器和应用内浏览器会拦截邮件链接——请改用下面任意一个：" data-ko="메일 앱이 열릴 것입니다. 아무 일도 일어나지 않았다면 — 데스크톱 브라우저나 앱 안의 브라우저는 메일 링크를 막는 경우가 많습니다 — 아래 중 하나를 사용하세요:" data-ar="من المفترض أن يفتح تطبيق بريدك. وإن لم يحدث شيء — فكثير من متصفّحات الحاسوب والمتصفّحات داخل التطبيقات تحجب روابط البريد — فاستخدم أحد هذين:" data-it="Dovrebbe aprirsi la tua app di posta. Se non è successo nulla — molti browser da computer e quelli dentro le app bloccano i link di posta — usa una di queste:"></p>
+        <div class="field">
+          <a class="btn btn-main" id="mailGmail" href="#" target="_blank" rel="noopener"><span data-t data-en="Open in Gmail" data-ja="Gmail で開く" data-zh="在 Gmail 中打开" data-ko="Gmail에서 열기" data-ar="افتح في Gmail" data-it="Apri in Gmail"></span></a>
+          <button class="btn btn-ghost" type="button" id="mailCopy"><span data-t data-en="Copy the message" data-ja="メッセージをコピー" data-zh="复制这条消息" data-ko="메시지 복사" data-ar="انسخ الرسالة" data-it="Copia il messaggio"></span></button>
+        </div>
+      </div>
       <p class="tiny" data-t
          data-en='This opens your mail app with a message ready to send — nothing is stored on this page. Or write straight to <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.' data-ja='メールアプリが本文入りで開くだけで、このページには何も保存されません。直接 <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a> に書いてもかまいません。' data-zh='这只会打开你的邮件应用并写好内容——本页不保存任何东西。也可以直接写信到 <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>。' data-ko='메일 앱이 내용이 채워진 채로 열릴 뿐, 이 페이지는 아무것도 저장하지 않습니다. <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>으로 바로 쓰셔도 됩니다.' data-ar='سيفتح هذا تطبيق بريدك برسالة جاهزة — ولا تخزّن هذه الصفحة شيئًا. أو اكتب مباشرةً إلى <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.'
          data-it='Si apre la tua app di posta con un messaggio già pronto — questa pagina non salva nulla. Oppure scrivi direttamente a <a href="mailto:clemalb@gmail.com?subject=Catch%20beta">clemalb@gmail.com</a>.'></p>
@@ -499,30 +517,80 @@ footer a{color:var(--coral-deep)}
   }
   wk.addEventListener("input", draw);
 
-  /* ── contact ──────────────────────────────────────────── */
-  document.getElementById("mailForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var addr = document.getElementById("email").value.trim();
-    var it = (STR.lang === "it");
-    var subject = it ? "Catch — feedback dalla beta" : "Catch — beta feedback";
-    var body = (it
-      ? "Ciao Alberto,\n\nHo provato Catch e ho notato questo:\n\n\n\n(Il mio indirizzo: " + addr + ")"
-      : "Hi Alberto,\n\nI tried Catch and noticed this:\n\n\n\n(My address: " + addr + ")");
-    window.location.href = "mailto:clemalb@gmail.com?subject=" + encodeURIComponent(subject) +
-                           "&body=" + encodeURIComponent(body);
-  });
+  /* ── contact ─────────────────────────────
+     mailto: only does something when the browser has a mail handler.
+     Desktop Chrome usually has none and in-app browsers (X, Instagram)
+     block the scheme outright — the click looked completely dead.
+     So we still try mailto, then always reveal a Gmail web link and a
+     copy button, which work everywhere. */
+  var TO = "clemalb@gmail.com";
+  var COPIED = { en:"Copied \u2713", it:"Copiato \u2713", ja:"\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f \u2713",
+                 zh:"\u5df2\u590d\u5236 \u2713", ko:"\ubcf5\uc0ac\ud588\uc2b5\ub2c8\ub2e4 \u2713", ar:"\u062a\u0645 \u0627\u0644\u0646\u0633\u062e \u2713" };
 
-  document.getElementById("androidForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var addr = document.getElementById("android-email").value.trim();
-    var it = (STR.lang === "it");
-    var subject = it ? "Catch \u2014 candidatura alla beta Android" : "Catch \u2014 Android beta application";
-    var body = (it
-      ? "Ciao Alberto,\n\nVorrei provare la beta Android di Catch.\n\nAccount Google del telefono: " + addr + "\nModello del telefono e versione di Android:\n\n"
-      : "Hi Alberto,\n\nI would like to test the Catch Android beta.\n\nGoogle account on my phone: " + addr + "\nPhone model and Android version:\n\n");
-    window.location.href = "mailto:clemalb@gmail.com?subject=" + encodeURIComponent(subject) +
-                           "&body=" + encodeURIComponent(body);
-  });
+  function copyText(text){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function(res, rej){
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "fixed"; ta.style.top = "-1000px";
+      document.body.appendChild(ta);
+      ta.select(); ta.setSelectionRange(0, ta.value.length);
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch(e){}
+      document.body.removeChild(ta);
+      ok ? res() : rej();
+    });
+  }
+
+  function wireForm(ids, compose){
+    var form  = document.getElementById(ids.form);
+    var input = document.getElementById(ids.input);
+    var box   = document.getElementById(ids.box);
+    var gmail = document.getElementById(ids.gmail);
+    var copy  = document.getElementById(ids.copy);
+    var msg   = { subject:"", body:"" };
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      msg = compose(input.value.trim(), STR.lang === "it");
+      var su = encodeURIComponent(msg.subject), bd = encodeURIComponent(msg.body);
+      gmail.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + TO + "&su=" + su + "&body=" + bd;
+      box.hidden = false;                     /* reveal first — mailto may navigate away */
+      try { window.location.href = "mailto:" + TO + "?subject=" + su + "&body=" + bd; } catch(err){}
+    });
+
+    copy.addEventListener("click", function(){
+      copyText(msg.subject + "\n\n" + msg.body).then(function(){
+        var span = copy.querySelector("span"), lang = STR.lang || "en";
+        span.textContent = COPIED[lang] || COPIED.en;
+        setTimeout(function(){
+          span.innerHTML = span.getAttribute("data-" + lang) || span.getAttribute("data-en");
+        }, 2500);
+      }, function(){});
+    });
+  }
+
+  wireForm({ form:"mailForm", input:"email", box:"mailFallback", gmail:"mailGmail", copy:"mailCopy" },
+    function(addr, it){
+      return {
+        subject: it ? "Catch \u2014 feedback dalla beta" : "Catch \u2014 beta feedback",
+        body: (it
+          ? "Ciao Alberto,\n\nHo provato Catch e ho notato questo:\n\n\n\n(Il mio indirizzo: " + addr + ")"
+          : "Hi Alberto,\n\nI tried Catch and noticed this:\n\n\n\n(My address: " + addr + ")")
+      };
+    });
+
+  wireForm({ form:"androidForm", input:"android-email", box:"androidFallback", gmail:"androidGmail", copy:"androidCopy" },
+    function(addr, it){
+      return {
+        subject: it ? "Catch \u2014 candidatura alla beta Android" : "Catch \u2014 Android beta application",
+        body: (it
+          ? "Ciao Alberto,\n\nVorrei provare la beta Android di Catch.\n\nAccount Google del telefono: " + addr + "\nModello del telefono e versione di Android:\n\n"
+          : "Hi Alberto,\n\nI would like to test the Catch Android beta.\n\nGoogle account on my phone: " + addr + "\nPhone model and Android version:\n\n")
+      };
+    });
 
   /* ── boot ─────────────────────────────────────────────── */
   var saved = null;
